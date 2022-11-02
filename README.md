@@ -1,11 +1,11 @@
-Cadastrar Produto
+->Cadastrar Produto
 
-Calcular Custo
+->Calcular Custo
 
-Vender Produto (À Vista/ À Prazo)
+->Vender Produto (À Vista/ À Prazo)
 
-Calcular Lucro
+->Calcular Lucro
 
-Alocar Como Custo/Despesa
+->Alocar Como Custo/Despesa
 
-Gerar Demonstrativo Financeiro
+->Gerar Demonstrativo Financeiro
