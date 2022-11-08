@@ -1,0 +1,6 @@
+C:\Projetos\Estudos\Desafio\Entidades\bin\Release\Entidades.dll
+C:\Projetos\Estudos\Desafio\Entidades\bin\Release\Entidades.pdb
+C:\Projetos\Estudos\Desafio\Entidades\obj\Release\Entidades.csprojAssemblyReference.cache
+C:\Projetos\Estudos\Desafio\Entidades\obj\Release\Entidades.csproj.CoreCompileInputs.cache
+C:\Projetos\Estudos\Desafio\Entidades\obj\Release\Entidades.dll
+C:\Projetos\Estudos\Desafio\Entidades\obj\Release\Entidades.pdb
