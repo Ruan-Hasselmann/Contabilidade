@@ -1,0 +1,20 @@
+
+Tabela Produtos
+
+	int codigo
+
+	varchar descricao
+
+	int estoque
+
+Tabela MovimentacoesProdutos
+
+	int codigo
+	
+	int codigo_produto
+	
+	int vperacao (1 compra 2 venda)
+	
+	double valor
+
+
