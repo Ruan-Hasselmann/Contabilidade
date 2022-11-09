@@ -18,5 +18,6 @@ Tabela MovimentacoesProdutos
 	int quantidade
 	
 	double valor
-
+	
+	int tipo_pagamento (1 vista 2 prazo)
 
