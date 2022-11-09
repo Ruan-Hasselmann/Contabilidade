@@ -13,7 +13,9 @@ Tabela MovimentacoesProdutos
 	
 	int codigo_produto
 	
-	int vperacao (1 compra 2 venda)
+	int operacao (1 compra 2 venda)
+	
+	int quantidade
 	
 	double valor
 
