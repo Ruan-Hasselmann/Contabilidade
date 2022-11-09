@@ -9,54 +9,43 @@ namespace Desafio.Cadastros
     {
 
         private bool IsNovo;
-        private Classe Cadastro;
+        private Produto Cadastro;
         public FrmCadClasses()
         {
             this.IsNovo = true;
             InitializeComponent();
         }
 
+        private void Bind()
+        {
+            this.TxtCodigo.DataBindings.Clear();
+            this.TxtDescricao.DataBindings.Clear();
+            this.TxtEstoque.DataBindings.Clear();
+
+            this.TxtCodigo.DataBindings.Add("Text", this.Cadastro, "Codigo", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtDescricao.DataBindings.Add("Text", this.Cadastro, "Descricao", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtEstoque.DataBindings.Add("Text", this.Cadastro, "Estoque", false, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
         private void FrmCadClasses_Load(object sender, EventArgs e)
         {
             if (IsNovo)
-                this.Cadastro = new Classe();
-            PopulaControles();
+                this.Cadastro = new Produto();
         }
 
-        public FrmCadClasses(Classe Classe)
+        public FrmCadClasses(Produto produto)
         {
             InitializeComponent();
-            this.Cadastro = Classe;
+            this.Cadastro = produto;
             IsNovo = false;
         }
 
-        private void PopulaControles()
-        {
-            TxtDescricao.Text = Cadastro.Descricao;
-            TxtCodigo.Text = Cadastro.Codigo.ToString();
-            TxtDefesa.Text = Cadastro.Defesa.ToString();
-            TxtDestresa.Text = Cadastro.Destresa.ToString();
-            TxtHP.Text = Cadastro.HP.ToString();
-            TxtForça.Text = Cadastro.Forca.ToString();
-        }
 
-        private void PopulaObjeto()
-        {
-            this.Cadastro.Descricao = TxtDescricao.Text;
-            this.Cadastro.Forca = Convert.ToInt32(TxtForça.Text);
-            this.Cadastro.Defesa = Convert.ToInt32(TxtDefesa.Text);
-            this.Cadastro.HP = Convert.ToInt32(TxtHP.Text);
-            this.Cadastro.Destresa = Convert.ToInt32(TxtDestresa.Text);
-        }
 
         private void LimparControles()
         {
             TxtDescricao.Text = string.Empty;
-            TxtCodigo.Text = string.Empty;
-            TxtDefesa.Text = string.Empty;
-            TxtDestresa.Text = string.Empty;
-            TxtHP.Text = string.Empty;
-            TxtForça.Text = string.Empty;
+            TxtEstoque.Text = string.Empty;
         }
 
         private void Inserir()
@@ -66,7 +55,7 @@ namespace Desafio.Cadastros
                 Conexao _bd = new Conexao();
                 _bd.InserirCLasse(this.Cadastro);
 
-                MessageBox.Show("Classe Inserida Com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Produto Inserido Com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparControles();
             }
             catch (Exception ex)
@@ -82,7 +71,7 @@ namespace Desafio.Cadastros
                 Conexao _bd = new Conexao();
                 _bd.AlterarClasse(this.Cadastro);
 
-                MessageBox.Show("Classe Alterada Com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Produto Alterado Com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             catch (Exception ex)
@@ -93,9 +82,8 @@ namespace Desafio.Cadastros
 
         private void Salvar()
         {
-            if (TxtDescricao.Text != "" && TxtForça.Text != "" && TxtHP.Text != "" && TxtDestresa.Text != "" && TxtDefesa.Text != "")
+            if (!string.IsNullOrEmpty(TxtDescricao.Text))
             {
-                PopulaObjeto();
                 if (IsNovo)
                     Inserir();
                 else

@@ -29,21 +29,15 @@
         private void InitializeComponent()
         {
             this.label8 = new System.Windows.Forms.Label();
-            this.TxtHP = new System.Windows.Forms.TextBox();
-            this.TxtDestresa = new System.Windows.Forms.TextBox();
-            this.TxtForça = new System.Windows.Forms.TextBox();
+            this.TxtEstoque = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.TxtDescricao = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnConfirmar = new System.Windows.Forms.Button();
             this.BtnSair = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.PnRodape = new System.Windows.Forms.Panel();
             this.TxtCodigo = new System.Windows.Forms.Label();
             this.labelCodGenero = new System.Windows.Forms.Label();
-            this.TxtDefesa = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.PnRodape.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,29 +50,14 @@
             this.label8.TabIndex = 93;
             this.label8.Text = "label8";
             // 
-            // TxtHP
+            // TxtEstoque
             // 
-            this.TxtHP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TxtHP.Location = new System.Drawing.Point(60, 129);
-            this.TxtHP.Name = "TxtHP";
-            this.TxtHP.Size = new System.Drawing.Size(42, 20);
-            this.TxtHP.TabIndex = 2;
-            // 
-            // TxtDestresa
-            // 
-            this.TxtDestresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TxtDestresa.Location = new System.Drawing.Point(12, 187);
-            this.TxtDestresa.Name = "TxtDestresa";
-            this.TxtDestresa.Size = new System.Drawing.Size(42, 20);
-            this.TxtDestresa.TabIndex = 3;
-            // 
-            // TxtForça
-            // 
-            this.TxtForça.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TxtForça.Location = new System.Drawing.Point(12, 129);
-            this.TxtForça.Name = "TxtForça";
-            this.TxtForça.Size = new System.Drawing.Size(42, 20);
-            this.TxtForça.TabIndex = 1;
+            this.TxtEstoque.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.TxtEstoque.Enabled = false;
+            this.TxtEstoque.Location = new System.Drawing.Point(12, 129);
+            this.TxtEstoque.Name = "TxtEstoque";
+            this.TxtEstoque.Size = new System.Drawing.Size(55, 20);
+            this.TxtEstoque.TabIndex = 1;
             // 
             // label4
             // 
@@ -97,23 +76,14 @@
             this.TxtDescricao.Size = new System.Drawing.Size(185, 20);
             this.TxtDescricao.TabIndex = 0;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 171);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 79;
-            this.label2.Text = "Destresa";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 113);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 78;
-            this.label1.Text = "Força";
+            this.label1.Text = "Estoque";
             // 
             // BtnConfirmar
             // 
@@ -136,15 +106,6 @@
             this.BtnSair.Text = "Sair";
             this.BtnSair.UseVisualStyleBackColor = true;
             this.BtnSair.Click += new System.EventHandler(this.BtnSair_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(60, 113);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(22, 13);
-            this.label3.TabIndex = 80;
-            this.label3.Text = "HP";
             // 
             // PnRodape
             // 
@@ -177,39 +138,16 @@
             this.labelCodGenero.TabIndex = 70;
             this.labelCodGenero.Text = "Código";
             // 
-            // TxtDefesa
-            // 
-            this.TxtDefesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TxtDefesa.Location = new System.Drawing.Point(60, 187);
-            this.TxtDefesa.Name = "TxtDefesa";
-            this.TxtDefesa.Size = new System.Drawing.Size(42, 20);
-            this.TxtDefesa.TabIndex = 4;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(60, 171);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
-            this.label6.TabIndex = 94;
-            this.label6.Text = "Defesa";
-            // 
             // FrmCadClasses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.TxtDefesa);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.TxtHP);
-            this.Controls.Add(this.TxtDestresa);
-            this.Controls.Add(this.TxtForça);
+            this.Controls.Add(this.TxtEstoque);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.TxtDescricao);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.PnRodape);
             this.Controls.Add(this.TxtCodigo);
             this.Controls.Add(this.labelCodGenero);
@@ -224,20 +162,14 @@
 
         #endregion
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox TxtHP;
-        private System.Windows.Forms.TextBox TxtDestresa;
-        private System.Windows.Forms.TextBox TxtForça;
+        private System.Windows.Forms.TextBox TxtEstoque;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TxtDescricao;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnConfirmar;
         private System.Windows.Forms.Button BtnSair;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel PnRodape;
         public System.Windows.Forms.Label TxtCodigo;
         private System.Windows.Forms.Label labelCodGenero;
-        private System.Windows.Forms.TextBox TxtDefesa;
-        private System.Windows.Forms.Label label6;
     }
 }
