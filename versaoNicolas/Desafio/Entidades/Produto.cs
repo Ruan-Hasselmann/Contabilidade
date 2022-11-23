@@ -18,5 +18,7 @@ namespace Entidades
         public string Descricao { get; set; }
 
         public int Estoque { get; set; }
+
+        public double Margem { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Desafio.Cadastros
 {
-    partial class FrmCadClasses
+    partial class FrmCadProdutos
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,8 @@
             this.PnRodape = new System.Windows.Forms.Panel();
             this.TxtCodigo = new System.Windows.Forms.Label();
             this.labelCodGenero = new System.Windows.Forms.Label();
+            this.TxtMargem = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.PnRodape.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,11 +140,31 @@
             this.labelCodGenero.TabIndex = 70;
             this.labelCodGenero.Text = "Código";
             // 
-            // FrmCadClasses
+            // TxtMargem
+            // 
+            this.TxtMargem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.TxtMargem.Location = new System.Drawing.Point(108, 129);
+            this.TxtMargem.Name = "TxtMargem";
+            this.TxtMargem.Size = new System.Drawing.Size(55, 20);
+            this.TxtMargem.TabIndex = 94;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(108, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 95;
+            this.label2.Text = "Margem";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // FrmCadProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TxtMargem);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TxtEstoque);
             this.Controls.Add(this.label4);
@@ -151,9 +173,9 @@
             this.Controls.Add(this.PnRodape);
             this.Controls.Add(this.TxtCodigo);
             this.Controls.Add(this.labelCodGenero);
-            this.Name = "FrmCadClasses";
+            this.Name = "FrmCadProdutos";
             this.Text = "5";
-            this.Load += new System.EventHandler(this.FrmCadClasses_Load);
+            this.Load += new System.EventHandler(this.FrmCadProdutos_Load);
             this.PnRodape.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -171,5 +193,7 @@
         private System.Windows.Forms.Panel PnRodape;
         public System.Windows.Forms.Label TxtCodigo;
         private System.Windows.Forms.Label labelCodGenero;
+        private System.Windows.Forms.TextBox TxtMargem;
+        private System.Windows.Forms.Label label2;
     }
 }

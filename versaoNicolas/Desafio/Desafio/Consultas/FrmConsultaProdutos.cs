@@ -7,16 +7,16 @@ using Desafio.Cadastros;
 
 namespace Desafio
 {
-    public partial class FrmConsultaClasses : Form
+    public partial class FrmConsultaProdutos : Form
     {
-        private  Classe Selecionada;
+        private Produto Selecionado;
 
-        public FrmConsultaClasses()
+        public FrmConsultaProdutos()
         {
             InitializeComponent();
         }
 
-        private void FrmConsultaClasses_Load(object sender, EventArgs e)
+        private void FrmConsultaProdutos_Load(object sender, EventArgs e)
         {
             this.DgvListaRegistros.AutoGenerateColumns = false;
             CarregarRegistros();
@@ -26,7 +26,7 @@ namespace Desafio
         {
             try
             {
-                List<Classe> listaRegistros = new Conexao().ListarClasses();
+                List<Produto> listaRegistros = new Conexao().ListarProdutos();
                 this.DgvListaRegistros.DataSource = listaRegistros;
             }
 
@@ -41,7 +41,7 @@ namespace Desafio
             if (DgvListaRegistros.Rows.Count > 0 ){
                 try
                 {
-                    this.Selecionada = (Classe)this.DgvListaRegistros.CurrentRow.DataBoundItem;
+                    this.Selecionado = (Produto)this.DgvListaRegistros.CurrentRow.DataBoundItem;
                     return true;
                 }
                 catch (Exception ex)
@@ -56,7 +56,7 @@ namespace Desafio
 
         private void InserirRegistro()
         {
-            FrmCadClasses frm = new FrmCadClasses();
+            FrmCadProdutos frm = new FrmCadProdutos();
             frm.StartPosition = FormStartPosition.CenterParent;
             if (frm.ShowDialog() == DialogResult.OK)
                 CarregarRegistros();
@@ -66,7 +66,7 @@ namespace Desafio
         {
             if (SelecionarRegistro())
             {
-                FrmCadClasses frm = new FrmCadClasses(this.Selecionada);
+                FrmCadProdutos frm = new FrmCadProdutos(this.Selecionado);
                 frm.StartPosition = FormStartPosition.CenterParent;
                 if (frm.ShowDialog() == DialogResult.OK)
                     CarregarRegistros();
@@ -80,16 +80,14 @@ namespace Desafio
                 try
                 {
                     Conexao _db = new Conexao();
-                    _db.ExcluirClasse(this.Selecionada);
+                    _db.ExcluirProduto(this.Selecionado);
                     CarregarRegistros();
-                    MessageBox.Show("Classe Deletada Com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Produto Deletado Com Sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch(Exception ex)
                 {
-                    if (ex.Message.StartsWith("Cannot delete or update a parent row: a foreign key constraint fails "))
-                        MessageBox.Show("Não é possivel deletar, porque a classe está associada a um livro.", "erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
-                        MessageBox.Show(ex.Message, "erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Não é possivel deletar o produto selecionado.", "erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
         }

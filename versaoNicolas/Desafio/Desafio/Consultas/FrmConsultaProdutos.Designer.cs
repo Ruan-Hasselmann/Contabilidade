@@ -1,6 +1,6 @@
 ﻿namespace Desafio
 {
-    partial class FrmConsultaClasses
+    partial class FrmConsultaProdutos
     {
         /// <summary>
         /// Required designer variable.
@@ -40,9 +40,7 @@
             this.ClCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clForca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clDestresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clDefesa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClMargem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PnGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaRegistros)).BeginInit();
             this.PnRodape.SuspendLayout();
@@ -65,9 +63,7 @@
             this.ClCodigo,
             this.clDescricao,
             this.clForca,
-            this.clHP,
-            this.clDestresa,
-            this.clDefesa});
+            this.ClMargem});
             this.DgvListaRegistros.Location = new System.Drawing.Point(4, 4);
             this.DgvListaRegistros.Name = "DgvListaRegistros";
             this.DgvListaRegistros.RowHeadersVisible = false;
@@ -149,38 +145,26 @@
             // 
             // clForca
             // 
-            this.clForca.DataPropertyName = "Forca";
-            this.clForca.HeaderText = "Força";
+            this.clForca.DataPropertyName = "Estoque";
+            this.clForca.HeaderText = "Estoque";
             this.clForca.Name = "clForca";
             // 
-            // clHP
+            // ClMargem
             // 
-            this.clHP.DataPropertyName = "HP";
-            this.clHP.HeaderText = "HP";
-            this.clHP.Name = "clHP";
+            this.ClMargem.DataPropertyName = "Margem";
+            this.ClMargem.HeaderText = "Margem";
+            this.ClMargem.Name = "ClMargem";
             // 
-            // clDestresa
-            // 
-            this.clDestresa.DataPropertyName = "Destresa";
-            this.clDestresa.HeaderText = "Destresa";
-            this.clDestresa.Name = "clDestresa";
-            // 
-            // clDefesa
-            // 
-            this.clDefesa.DataPropertyName = "Defesa";
-            this.clDefesa.HeaderText = "Defesa";
-            this.clDefesa.Name = "clDefesa";
-            // 
-            // FrmConsultaClasses
+            // FrmConsultaProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.PnRodape);
             this.Controls.Add(this.PnGrid);
-            this.Name = "FrmConsultaClasses";
-            this.Text = "FrmConsultaClasses";
-            this.Load += new System.EventHandler(this.FrmConsultaClasses_Load);
+            this.Name = "FrmConsultaProdutos";
+            this.Text = "FrmConsultaProdutos";
+            this.Load += new System.EventHandler(this.FrmConsultaProdutos_Load);
             this.PnGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaRegistros)).EndInit();
             this.PnRodape.ResumeLayout(false);
@@ -200,8 +184,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clDescricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn clForca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clHP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clDestresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clDefesa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClMargem;
     }
 }

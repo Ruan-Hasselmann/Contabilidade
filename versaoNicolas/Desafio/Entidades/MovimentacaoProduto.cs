@@ -27,7 +27,7 @@ namespace Entidades
             }
             set
             {
-                value = this.produto;
+                this.produto = value;
                 if (value != null && value.Codigo > 0)
                     this.CodigoProduto = value.Codigo;
                 else

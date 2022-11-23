@@ -25,9 +25,9 @@ namespace BaseDados
         private void Inicializar()
         {
             Server = "127.0.0.1";
-            Database = "provaNicolasLInguages2";
+            Database = "db_contabilidade;";
             Uid = "root";
-            Password = "";
+            Password = "laboratorio";
             Port = "3306";
             string connectionstring = "SERVER=" + Server + ";" + "PORT=" + Port + ";" + "DATABASE=" +
             Database + ";" + "UID=" + Uid + ";" + "PASSWORD=" + Password + ";";
@@ -84,11 +84,11 @@ namespace BaseDados
         }
 
        
-        public bool InserirCLasse(Classe Classe)
+        public bool InserirProduto(Produto Produto)
         {
             try
             {
-                string query = string.Format("INSERT INTO classe (descricao, forca, HP, destresa, defesa) values('{0}', {1}, {2}, {3}, {4})", Classe.Descricao, Classe.Forca, Classe.HP, Classe.Destresa, Classe.Defesa);
+                string query = string.Format("INSERT INTO Produtos (descricao, qtdEstoque, margem) values('{0}', {1}, {2})", Produto.Descricao, Produto.Estoque, Produto.Margem);
                 return ExecutarQuery(query);
             }
 
@@ -104,11 +104,11 @@ namespace BaseDados
             }
         }
 
-        public bool AlterarClasse(Classe Classe)
+        public bool AlterarProduto(Produto obj)
         {
             try
             {
-                string query = string.Format("update classe set descricao='{0}', forca={1}, HP={2}, destresa={3}, defesa={4} WHERE codigo={5}", Classe.Descricao, Classe.Forca, Classe.HP, Classe.Destresa, Classe.Defesa, Classe.Codigo);
+                string query = string.Format("update produtos set descricao='{0}', qtdEstoque={1}, margem = {2} WHERE idProduto = {3}", obj.Descricao, obj.Estoque, obj.Margem, obj.Codigo);
                 return ExecutarQuery(query);
             }
 
@@ -124,11 +124,11 @@ namespace BaseDados
             }
         }
 
-        public bool ExcluirClasse(Classe Classe)
+        public bool ExcluirProduto(Produto obj)
         {
             try
             {
-                string query = string.Format("delete from classe where codigo = {0}", Classe.Codigo);
+                string query = string.Format("delete from produtos where idProduto  = {0}", obj.Codigo);
                 return ExecutarQuery(query);
             }
 
@@ -144,27 +144,24 @@ namespace BaseDados
             }
         }
 
-        public List<Classe> ListarClasses()
+        public List<Produto> ListarProdutos()
         {
-            List<Classe> listaRegistros = new List<Classe>();
+            List<Produto> listaRegistros = new List<Produto>();
 
             try
             {
                 AbrirConexao();
-                string query = @"SELECT codigo,descricao,forca,hp,destresa,defesa FROM classe";
+                string query = @"SELECT idProduto ,descricao ,qtdEstoque, margem FROM produtos";
                 MySqlCommand cmd = new MySqlCommand(query, Connection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    Classe obj = new Classe();
-                    obj.Codigo = Convert.ToInt32(reader["codigo"]);
+                    Produto obj = new Produto();
+                    obj.Codigo = Convert.ToInt32(reader["idProduto"]);
                     obj.Descricao = reader["descricao"].ToString();
-                    obj.Forca = Convert.ToInt32(reader["forca"]);
-                    obj.HP = Convert.ToInt32(reader["hp"]);
-                    obj.Destresa = Convert.ToInt32(reader["destresa"]);
-                    obj.Defesa = Convert.ToInt32(reader["defesa"]);
-
+                    obj.Estoque = Convert.ToInt32(reader["qtdEstoque"]);
+                    obj.Margem = Convert.ToInt32(reader["margem"]);
                     listaRegistros.Add(obj);
                 }
                 reader.Close();
@@ -182,7 +179,7 @@ namespace BaseDados
         {
             try
             {
-                string query = string.Format("INSERT INTO personagens (nome, codigo_classe, XP, pontos_livres, nivel, forca, hp, destresa, defesa) " +
+                string query = string.Format("INSERT INTO personagens (nome, codigo_Produto, XP, pontos_livres, nivel, forca, hp, destresa, defesa) " +
                     "values('{0}', '{1}', {2}, {3}, {4}, {5}, '{6}', {7}, {8}", Personagem.Nome, Personagem.Classe.Codigo, Personagem.XP, Personagem.PontosLivres, Personagem.Nivel, Personagem.Forca, Personagem.HP, Personagem.Destresa, Personagem.Defesa);
                 return ExecutarQuery(query);
             }
@@ -203,7 +200,7 @@ namespace BaseDados
         {
             try
             {
-                string query = string.Format("UPDATE Personagens SET nome = '{0}', codigo_classe = {1}, XP = {2}, pontos_livres = {3}, nivel = {4}, forca = {5}, hp = {6}, destresa = {7}, defesa = {8} " +
+                string query = string.Format("UPDATE Personagens SET nome = '{0}', codigo_Produto = {1}, XP = {2}, pontos_livres = {3}, nivel = {4}, forca = {5}, hp = {6}, destresa = {7}, defesa = {8} " +
                     "WHERE codigo = {8}", Personagem.Nome, Personagem.Classe.Codigo, Personagem.XP, Personagem.PontosLivres, Personagem.Nivel, Personagem.Forca, Personagem.HP, Personagem.Destresa, Personagem.Destresa);
                 return ExecutarQuery(query);
             }
@@ -250,12 +247,12 @@ namespace BaseDados
                 string query = @"SELECT 
                                         Codigo, 
                                         nome, 
-                                        codClasse, 
-                                        classe,
-                                        classe_forca,
-                                        classe_HP,
-                                        classe_destresa,
-                                        classe_defesa,
+                                        codProduto, 
+                                        Produto,
+                                        Produto_forca,
+                                        Produto_HP,
+                                        Produto_destresa,
+                                        Produto_defesa,
                                         XP, 
                                         pontos_livres, 
                                         nivel, 
@@ -272,12 +269,12 @@ namespace BaseDados
                     Personagem obj = new Personagem();
                     obj.Codigo = Convert.ToInt32(reader["Codigo"]);
                     obj.Nome = reader["nome"].ToString();
-                    obj.Classe.Codigo = Convert.ToInt32(reader["codClasse"]);
-                    obj.Classe.Descricao = reader["classe"].ToString();
-                    obj.Classe.Forca = Convert.ToInt32(reader["classe_forca"]);
-                    obj.Classe.HP = Convert.ToInt32(reader["classe_HP"]);
-                    obj.Classe.Destresa = Convert.ToInt32(reader["classe_destresa"]);
-                    obj.Classe.Defesa = Convert.ToInt32(reader["classe_defesa"]);
+                    obj.Classe.Codigo = Convert.ToInt32(reader["codProduto"]);
+                    obj.Classe.Descricao = reader["Produto"].ToString();
+                    obj.Classe.Forca = Convert.ToInt32(reader["Produto_forca"]);
+                    obj.Classe.HP = Convert.ToInt32(reader["Produto_HP"]);
+                    obj.Classe.Destresa = Convert.ToInt32(reader["Produto_destresa"]);
+                    obj.Classe.Defesa = Convert.ToInt32(reader["Produto_defesa"]);
                     obj.XP = Convert.ToInt32(reader["XP"]);
                     obj.PontosLivres = Convert.ToInt32(reader["pontos_livres"]);
                     obj.Nivel = Convert.ToInt32(reader["nivel"]);

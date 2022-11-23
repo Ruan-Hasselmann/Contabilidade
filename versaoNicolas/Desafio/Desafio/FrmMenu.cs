@@ -12,7 +12,7 @@ namespace Desafio
         }
         private void classesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmConsultaClasses frm = new FrmConsultaClasses();
+            FrmConsultaProdutos frm = new FrmConsultaProdutos();
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }

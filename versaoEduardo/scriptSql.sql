@@ -1,26 +1,27 @@
 CREATE DATABASE db_contabilidade;
 USE db_contabilidade;
-GO
+
 
 CREATE TABLE PRODUTOS
 (
-	idProduto integer not null primary key identity,
+	idProduto integer not null primary key auto_increment,
 	descricao varchar(50),
+	margem double,
 	qtdEstoque integer
-)
-GO
+);
+
 
 CREATE TABLE MOVIMENTACOES
 (
-	idMov integer not null primary key identity,
+	idMov integer not null primary key auto_increment,
 	operacao char(1),
 	valor decimal(10,2),
 	qtd integer,
 	tipoPagamento char(1),
-	fk_idProduto integer
+	fk_idProduto integer,
 	foreign key (fk_idProduto) references PRODUTOS(idProduto)
-)
-GO
+);
+
 
 INSERT INTO PRODUTOS(descricao, qtdEstoque) VALUES ('Lápis', 100);
 INSERT INTO PRODUTOS(descricao, qtdEstoque) VALUES ('Borracha', 60);

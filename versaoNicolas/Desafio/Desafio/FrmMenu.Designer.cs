@@ -58,7 +58,7 @@
             // 
             this.classesToolStripMenuItem.Name = "classesToolStripMenuItem";
             this.classesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.classesToolStripMenuItem.Text = "Classes";
+            this.classesToolStripMenuItem.Text = "Produtos";
             this.classesToolStripMenuItem.Click += new System.EventHandler(this.classesToolStripMenuItem_Click);
             // 
             // personagemToolStripMenuItem

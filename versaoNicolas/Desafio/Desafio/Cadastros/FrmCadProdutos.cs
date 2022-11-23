@@ -5,12 +5,12 @@ using System.Windows.Forms;
 
 namespace Desafio.Cadastros
 {
-    public partial class FrmCadClasses : Form
+    public partial class FrmCadProdutos : Form
     {
 
         private bool IsNovo;
         private Produto Cadastro;
-        public FrmCadClasses()
+        public FrmCadProdutos()
         {
             this.IsNovo = true;
             InitializeComponent();
@@ -21,19 +21,25 @@ namespace Desafio.Cadastros
             this.TxtCodigo.DataBindings.Clear();
             this.TxtDescricao.DataBindings.Clear();
             this.TxtEstoque.DataBindings.Clear();
+            this.TxtMargem.DataBindings.Clear();
+
 
             this.TxtCodigo.DataBindings.Add("Text", this.Cadastro, "Codigo", false, DataSourceUpdateMode.OnPropertyChanged);
             this.TxtDescricao.DataBindings.Add("Text", this.Cadastro, "Descricao", false, DataSourceUpdateMode.OnPropertyChanged);
             this.TxtEstoque.DataBindings.Add("Text", this.Cadastro, "Estoque", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtMargem.DataBindings.Add("Text", this.Cadastro, "Margem", false, DataSourceUpdateMode.OnPropertyChanged);
+
         }
 
-        private void FrmCadClasses_Load(object sender, EventArgs e)
+        private void FrmCadProdutos_Load(object sender, EventArgs e)
         {
             if (IsNovo)
                 this.Cadastro = new Produto();
+
+            Bind();
         }
 
-        public FrmCadClasses(Produto produto)
+        public FrmCadProdutos(Produto produto)
         {
             InitializeComponent();
             this.Cadastro = produto;
@@ -53,7 +59,7 @@ namespace Desafio.Cadastros
             try
             {
                 Conexao _bd = new Conexao();
-                _bd.InserirCLasse(this.Cadastro);
+                _bd.InserirProduto(this.Cadastro);
 
                 MessageBox.Show("Produto Inserido Com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimparControles();
@@ -69,7 +75,7 @@ namespace Desafio.Cadastros
             try
             {
                 Conexao _bd = new Conexao();
-                _bd.AlterarClasse(this.Cadastro);
+               _bd.AlterarProduto(this.Cadastro);
 
                 MessageBox.Show("Produto Alterado Com Sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

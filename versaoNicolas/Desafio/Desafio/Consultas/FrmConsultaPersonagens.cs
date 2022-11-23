@@ -55,7 +55,7 @@ namespace Desafio
 
         private void InserirRegistro()
         {
-            FrmCadPersonagens frm = new FrmCadPersonagens();
+            FrmMovimentacaoProdutos frm = new FrmMovimentacaoProdutos();
             frm.StartPosition = FormStartPosition.CenterParent;
             if (frm.ShowDialog() == DialogResult.OK)
                 CarregarRegistros();
@@ -65,7 +65,7 @@ namespace Desafio
         {
             if (SelecionarRegistro())
             {
-                FrmCadPersonagens frm = new FrmCadPersonagens(this.Selecionado);
+                FrmMovimentacaoProdutos frm = new FrmMovimentacaoProdutos(this.Selecionado);
                 frm.StartPosition = FormStartPosition.CenterParent;
                 if (frm.ShowDialog() == DialogResult.OK)
                     CarregarRegistros();
