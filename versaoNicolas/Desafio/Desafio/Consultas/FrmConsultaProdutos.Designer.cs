@@ -31,19 +31,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PnGrid = new System.Windows.Forms.Panel();
-            this.DgvListaRegistros = new Desafio.UserControls.DataGridCustomizada();
             this.PnRodape = new System.Windows.Forms.Panel();
             this.BtnInserir = new System.Windows.Forms.Button();
             this.BtnAlterar = new System.Windows.Forms.Button();
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.BtnSair = new System.Windows.Forms.Button();
+            this.BtnSelecionar = new System.Windows.Forms.Button();
+            this.DgvListaRegistros = new Desafio.UserControls.DataGridCustomizada();
             this.ClCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clForca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClMargem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PnGrid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvListaRegistros)).BeginInit();
             this.PnRodape.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListaRegistros)).BeginInit();
             this.SuspendLayout();
             // 
             // PnGrid
@@ -54,27 +55,9 @@
             this.PnGrid.Size = new System.Drawing.Size(776, 385);
             this.PnGrid.TabIndex = 0;
             // 
-            // DgvListaRegistros
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
-            this.DgvListaRegistros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DgvListaRegistros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvListaRegistros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ClCodigo,
-            this.clDescricao,
-            this.clForca,
-            this.ClMargem});
-            this.DgvListaRegistros.Location = new System.Drawing.Point(4, 4);
-            this.DgvListaRegistros.Name = "DgvListaRegistros";
-            this.DgvListaRegistros.RowHeadersVisible = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.DgvListaRegistros.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.DgvListaRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListaRegistros.Size = new System.Drawing.Size(769, 381);
-            this.DgvListaRegistros.TabIndex = 0;
-            // 
             // PnRodape
             // 
+            this.PnRodape.Controls.Add(this.BtnSelecionar);
             this.PnRodape.Controls.Add(this.BtnInserir);
             this.PnRodape.Controls.Add(this.BtnAlterar);
             this.PnRodape.Controls.Add(this.BtnExcluir);
@@ -130,6 +113,36 @@
             this.BtnSair.UseVisualStyleBackColor = true;
             this.BtnSair.Click += new System.EventHandler(this.BtnSair_Click);
             // 
+            // BtnSelecionar
+            // 
+            this.BtnSelecionar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnSelecionar.Location = new System.Drawing.Point(425, 0);
+            this.BtnSelecionar.Name = "BtnSelecionar";
+            this.BtnSelecionar.Size = new System.Drawing.Size(75, 47);
+            this.BtnSelecionar.TabIndex = 4;
+            this.BtnSelecionar.Text = "Selecionar";
+            this.BtnSelecionar.UseVisualStyleBackColor = true;
+            this.BtnSelecionar.Click += new System.EventHandler(this.BtnSelecionar_Click);
+            // 
+            // DgvListaRegistros
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
+            this.DgvListaRegistros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DgvListaRegistros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvListaRegistros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ClCodigo,
+            this.clDescricao,
+            this.clForca,
+            this.ClMargem});
+            this.DgvListaRegistros.Location = new System.Drawing.Point(4, 4);
+            this.DgvListaRegistros.Name = "DgvListaRegistros";
+            this.DgvListaRegistros.RowHeadersVisible = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.DgvListaRegistros.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.DgvListaRegistros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvListaRegistros.Size = new System.Drawing.Size(769, 381);
+            this.DgvListaRegistros.TabIndex = 0;
+            // 
             // ClCodigo
             // 
             this.ClCodigo.DataPropertyName = "Codigo";
@@ -166,8 +179,8 @@
             this.Text = "FrmConsultaProdutos";
             this.Load += new System.EventHandler(this.FrmConsultaProdutos_Load);
             this.PnGrid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgvListaRegistros)).EndInit();
             this.PnRodape.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListaRegistros)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -185,5 +198,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clDescricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn clForca;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClMargem;
+        private System.Windows.Forms.Button BtnSelecionar;
     }
 }

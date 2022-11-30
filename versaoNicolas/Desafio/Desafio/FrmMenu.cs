@@ -10,16 +10,17 @@ namespace Desafio
         {
             InitializeComponent();
         }
-        private void classesToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void cadastrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmConsultaProdutos frm = new FrmConsultaProdutos();
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
 
-        private void personagemToolStripMenuItem_Click(object sender, EventArgs e)
+        private void movimentaçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmConsultaPersonagens frm = new FrmConsultaPersonagens();
+            FrmMovimentacaoProdutos frm = new FrmMovimentacaoProdutos();
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }

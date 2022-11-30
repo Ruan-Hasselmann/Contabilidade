@@ -20,5 +20,7 @@ namespace Entidades
         public int Estoque { get; set; }
 
         public double Margem { get; set; }
+
+        public double Unidades { get; set; }
     }
 }

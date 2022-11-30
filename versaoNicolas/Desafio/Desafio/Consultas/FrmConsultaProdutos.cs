@@ -112,5 +112,17 @@ namespace Desafio
         {
             this.Close();
         }
+
+        public Produto RetornarSelecionado()
+        {
+            SelecionarRegistro();
+            return this.Selecionado;
+        }
+
+        private void BtnSelecionar_Click(object sender, EventArgs e)
+        {
+            RetornarSelecionado();
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

@@ -8,9 +8,15 @@ namespace Entidades
 {
     public class MovimentacaoProduto
     {
+        public MovimentacaoProduto(Operacao op)
+        {
+            this.Operacao = op;
+            this.Produto = new Produto();
+        }
+
         public MovimentacaoProduto()
         {
-
+            this.Produto = new Produto();
         }
 
         public int Codigo { get; set; }
@@ -43,6 +49,13 @@ namespace Entidades
 
         public double valor { get; set; }
 
-
+        public double Total
+        {
+            get
+            {
+                return quantidade * valor;
+            }
+            set { }
+        }
     }
 }

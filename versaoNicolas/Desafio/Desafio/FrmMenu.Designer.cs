@@ -30,15 +30,15 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.classesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.personagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.movimentaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrosToolStripMenuItem});
+            this.cadastrosToolStripMenuItem,
+            this.movimentaçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
@@ -47,26 +47,17 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.classesToolStripMenuItem,
-            this.personagemToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
+            this.cadastrosToolStripMenuItem.Click += new System.EventHandler(this.cadastrosToolStripMenuItem_Click);
             // 
-            // classesToolStripMenuItem
+            // movimentaçõesToolStripMenuItem
             // 
-            this.classesToolStripMenuItem.Name = "classesToolStripMenuItem";
-            this.classesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.classesToolStripMenuItem.Text = "Produtos";
-            this.classesToolStripMenuItem.Click += new System.EventHandler(this.classesToolStripMenuItem_Click);
-            // 
-            // personagemToolStripMenuItem
-            // 
-            this.personagemToolStripMenuItem.Name = "personagemToolStripMenuItem";
-            this.personagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.personagemToolStripMenuItem.Text = "Personagens";
-            this.personagemToolStripMenuItem.Click += new System.EventHandler(this.personagemToolStripMenuItem_Click);
+            this.movimentaçõesToolStripMenuItem.Name = "movimentaçõesToolStripMenuItem";
+            this.movimentaçõesToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
+            this.movimentaçõesToolStripMenuItem.Text = "Movimentações";
+            this.movimentaçõesToolStripMenuItem.Click += new System.EventHandler(this.movimentaçõesToolStripMenuItem_Click);
             // 
             // FrmMenu
             // 
@@ -90,7 +81,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem classesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem personagemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem movimentaçõesToolStripMenuItem;
     }
 }

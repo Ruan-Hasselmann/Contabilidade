@@ -175,12 +175,99 @@ namespace BaseDados
             return listaRegistros;
         }
 
+        public List<MovimentacaoProduto> ListarMovimentacoes()
+        {
+            List<MovimentacaoProduto> listaRegistros = new List<MovimentacaoProduto>();
+
+            try
+            {
+                AbrirConexao();
+                string query = @"SELECT idMov ,operacao ,valor, qtd, tipoPagamento, fk_idProduto FROM MOVIMENTACOES";
+                MySqlCommand cmd = new MySqlCommand(query, Connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    MovimentacaoProduto obj = new MovimentacaoProduto();
+                    obj.Codigo = Convert.ToInt32(reader["idProduto"]);
+                    obj.Operacao = (Operacao)Convert.ToInt32(reader["operacao"]);
+                    obj.valor = Convert.ToDouble(reader["valor"]);
+                    obj.quantidade = Convert.ToInt32(reader["qtd"]);
+                    obj.TipoPagamento = (TipoPagamento)Convert.ToInt32(reader["tipoPagamento"]);
+                    obj.CodigoProduto = Convert.ToInt32(reader["idProduto"]);
+                    listaRegistros.Add(obj);
+                }
+                reader.Close();
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+
+            return listaRegistros;
+        }
+
+        public List<MovimentacaoProduto> CarregarProdutosMovimentacoes(List<MovimentacaoProduto> Lista)
+        {
+            List<Produto> ListaProdutos = this.ListarProdutos();
+
+            foreach (MovimentacaoProduto obj in Lista)
+            {
+                if (ListaProdutos.Exists(x => x.Codigo == obj.CodigoProduto.Value))
+                    obj.Produto = ListaProdutos.First(x => x.Codigo == obj.CodigoProduto.Value);
+            }
+
+            return Lista;
+        }
+
         public bool InserirPersonagem(Personagem Personagem)
         {
             try
             {
                 string query = string.Format("INSERT INTO personagens (nome, codigo_Produto, XP, pontos_livres, nivel, forca, hp, destresa, defesa) " +
                     "values('{0}', '{1}', {2}, {3}, {4}, {5}, '{6}', {7}, {8}", Personagem.Nome, Personagem.Classe.Codigo, Personagem.XP, Personagem.PontosLivres, Personagem.Nivel, Personagem.Forca, Personagem.HP, Personagem.Destresa, Personagem.Defesa);
+                return ExecutarQuery(query);
+            }
+
+            catch (Exception ex)
+            {
+                FecharConexao();
+                throw ex;
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+        }
+
+        public bool InserirMovimentacao(MovimentacaoProduto Movimentacao)
+        {
+            try
+            {
+                string query = string.Format("INSERT INTO MOVIMENTACOES (operacao, valor, qtd, tipoPagamento, fk_idProduto) " +
+                    "values('{0}', '{1}', {2}, {3}, {4})", (int)Movimentacao.Operacao, Movimentacao.valor, Movimentacao.quantidade, (int)Movimentacao.TipoPagamento, Movimentacao.CodigoProduto);
+                return ExecutarQuery(query);
+            }
+
+            catch (Exception ex)
+            {
+                FecharConexao();
+                throw ex;
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+        }
+
+        public bool AtualizarEstoque(MovimentacaoProduto Movimentacao)
+        {
+            try
+            {
+                string query = string.Format("UPDATE PRODUTOS SET qtdEstoque = {0} WHERE idProduto = {1} ", Movimentacao.Operacao.Equals(Operacao.Compra) ? (Movimentacao.quantidade + Movimentacao.Produto.Estoque) : (Movimentacao.Produto.Estoque - Movimentacao.quantidade) , Movimentacao.CodigoProduto);
                 return ExecutarQuery(query);
             }
 

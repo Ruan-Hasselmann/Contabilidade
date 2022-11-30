@@ -17,6 +17,10 @@ namespace Desafio
         private bool IsNovo;
         private Personagem Cadastro;
 
+        private MovimentacaoProduto movimentacaoCompra;
+
+        private MovimentacaoProduto movimentacaoVenda;
+
         public FrmMovimentacaoProdutos()
         {
             this.IsNovo = true;
@@ -32,24 +36,44 @@ namespace Desafio
 
         private void FrmMovimentacaoProdutos_Load(object sender, EventArgs e)
         {
-            if (IsNovo)
-                this.Cadastro = new Personagem();
+            movimentacaoCompra = new MovimentacaoProduto(Operacao.Compra);
+            movimentacaoVenda = new MovimentacaoProduto(Operacao.Venda);
             Bind();
+            TxtVistaCompra.Checked = true;
+            TxtVistaVenda.Checked = true;
         }
 
+        private void BindProdutoCompra()
+        {
+            this.TxtCodProdutoCompra.DataBindings.Clear();
+            this.TxtProdutoCompra.DataBindings.Clear();
+            this.TxtQuantiaCompra.DataBindings.Clear();
+            this.TxtValorCompra.DataBindings.Clear();
+            this.TxtTotalCompra.DataBindings.Clear();
 
+            this.TxtCodProdutoCompra.DataBindings.Add("Text", this.movimentacaoCompra, "CodigoProduto", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtProdutoCompra.DataBindings.Add("Text", this.movimentacaoCompra.Produto, "Descricao", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtQuantiaCompra.DataBindings.Add("Text", this.movimentacaoCompra, "quantidade", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtValorCompra.DataBindings.Add("Text", this.movimentacaoCompra, "valor", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtTotalCompra.DataBindings.Add("Text", this.movimentacaoCompra, "Total", false, DataSourceUpdateMode.OnPropertyChanged);
+        }
+        private void BindProdutoVenda()
+        {
+            this.TxtCodProdutoVenda.DataBindings.Clear();
+            this.TxtProdutoVenda.DataBindings.Clear();
+            this.TxtQuantiaVenda.DataBindings.Clear();
+            this.TxtValorVenda.DataBindings.Clear();
+            this.TxtTotalVenda.DataBindings.Clear();
+
+            this.TxtCodProdutoVenda.DataBindings.Add("Text", this.movimentacaoVenda, "CodigoProduto", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtProdutoVenda.DataBindings.Add("Text", this.movimentacaoVenda.Produto, "Descricao", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtQuantiaVenda.DataBindings.Add("Text", this.movimentacaoVenda, "quantidade", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtValorVenda.DataBindings.Add("Text", this.movimentacaoVenda, "valor", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtTotalVenda.DataBindings.Add("Text", this.movimentacaoVenda, "Total", false, DataSourceUpdateMode.OnPropertyChanged);
+        }
         private void Bind() {
-           /* this.txtForca.DataBindings.Clear();
-            this.TxtDestresa.DataBindings.Clear();
-            this.TxtHP.DataBindings.Clear();
-            this.txtDefesa.DataBindings.Clear();
-            this.TxtPontosLivres.DataBindings.Clear();*/
-            /*
-            this.txtForca.DataBindings.Add("Text", this.Cadastro, "Forca", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.TxtDestresa.DataBindings.Add("Text", this.Cadastro, "Destresa", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.TxtHP.DataBindings.Add("Text", this.Cadastro, "HP", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.txtDefesa.DataBindings.Add("Text", this.Cadastro, "Defesa", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.TxtPontosLivres.DataBindings.Add("Text", this.Cadastro, "PontosLivres", false, DataSourceUpdateMode.OnPropertyChanged);*/
+            BindProdutoCompra();
+            BindProdutoVenda();
         }
 
 
@@ -95,24 +119,16 @@ namespace Desafio
 
         private void ProcurarClasse()
         {
-            /*Conexao _db = new Conexao();
-            List<Classe> listaRegistros = _db.ListarClasses();
-            FrmPesquisaClasse frm = new FrmPesquisaClasse(listaRegistros.ConvertAll(x => x).ToList<Classe>());
+            Conexao _db = new Conexao();
+            List<Produto> listaRegistros = _db.ListarProdutos();
+            FrmConsultaProdutos frm = new FrmConsultaProdutos();
             frm.StartPosition = FormStartPosition.CenterParent;
-            if (frm.ShowDialog() == DialogResult.OK)
+            if (frm.ShowDialog().Equals(DialogResult.OK))
             {
-                Cadastro.Classe = (Classe)frm.RetornaSelecionado();
-                TxtClasse.Text = Cadastro.ClassePersonagem;
-                TxtCodClasse.Text = Cadastro.Classe.Codigo.ToString();
-
-                ResetarAtributos();
+                movimentacaoCompra.Produto = frm.RetornarSelecionado();
+                BindProdutoCompra();
             }
-            else
-            {
-                MessageBox.Show("Não foram encontradas Classes com este código", "erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                TxtClasse.Text = string.Empty;
-                TxtCodClasse.Text = string.Empty;
-            }*/
+
         }
 
         private void ResetarAtributos()
@@ -151,6 +167,75 @@ namespace Desafio
             this.Close();
         }
 
+        private void TxtQuantiaCompra_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtQuantiaCompra.Text) && !string.IsNullOrEmpty(TxtValorCompra.Text))
+                this.TxtTotalCompra.Text = (Convert.ToInt64(TxtQuantiaCompra.Text) * Convert.ToInt64(TxtValorCompra.Text)).ToString();
+        }
+
+        private void TxtValorCompra_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtQuantiaVenda.Text) && !string.IsNullOrEmpty(TxtValorVenda.Text))
+                this.TxtTotalVenda.Text = (Convert.ToInt64(TxtQuantiaVenda.Text) * Convert.ToInt64(TxtValorVenda.Text)).ToString();
+        }
+
+        private void InserirCompra()
+        {
+            Conexao _bd = new Conexao();
+            _bd.InserirMovimentacao(this.movimentacaoCompra);
+            _bd.AtualizarEstoque(this.movimentacaoCompra);
+        }
+
+        private void InserirVenda()
+        {
+            Conexao _bd = new Conexao();
+            _bd.InserirMovimentacao(this.movimentacaoVenda);
+            _bd.AtualizarEstoque(this.movimentacaoVenda);
+        }
+        private void BtnConfirmarCompra_Click(object sender, EventArgs e)
+        {
+            InserirCompra();
+        }
+
+        private void TxtVistaCompra_CheckedChanged(object sender, EventArgs e)
+        {
+            this.movimentacaoCompra.TipoPagamento = TipoPagamento.Vista;
+        }
+
+        private void TxtPrazoCompra_CheckedChanged(object sender, EventArgs e)
+        {
+            this.movimentacaoCompra.TipoPagamento = TipoPagamento.Prazo;
+        }
+
+        private void BtnConfirmarVenda_Click(object sender, EventArgs e)
+        {
+            InserirVenda();
+        }
+
+        private void BtnPProdutoVenda_Click(object sender, EventArgs e)
+        {
+            Conexao _db = new Conexao();
+            List<Produto> listaRegistros = _db.ListarProdutos();
+            FrmConsultaProdutos frm = new FrmConsultaProdutos();
+            frm.StartPosition = FormStartPosition.CenterParent;
+            if (frm.ShowDialog().Equals(DialogResult.OK))
+            {
+                movimentacaoVenda.Produto = frm.RetornarSelecionado();
+                BindProdutoVenda();
+            }
+        }
+
+        private void TxtVistaVenda_CheckedChanged(object sender, EventArgs e)
+        {
+            this.movimentacaoVenda.TipoPagamento = TipoPagamento.Vista;
+
+        }
+
+        private void TxtPrazoVenda_CheckedChanged(object sender, EventArgs e)
+        {
+            this.movimentacaoVenda.TipoPagamento = TipoPagamento.Prazo;
+
+        }
     }
 }
 
