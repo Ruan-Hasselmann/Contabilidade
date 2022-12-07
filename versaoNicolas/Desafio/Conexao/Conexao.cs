@@ -104,53 +104,11 @@ namespace BaseDados
             }
         }
 
-        public bool InserirCliente(Cliente cliente
-            )
-        {
-            try
-            {
-                string query = string.Format("INSERT INTO Clientes (nomeCliente) values('{0}')", cliente.nome);
-                return ExecutarQuery(query);
-            }
-
-            catch (Exception ex)
-            {
-                FecharConexao();
-                throw ex;
-            }
-
-            finally
-            {
-                FecharConexao();
-            }
-        }
-
         public bool AlterarProduto(Produto obj)
         {
             try
             {
-                string query = string.Format("update Produtos set descricao='{0}', qtdEstoque={1}, margem = {2} WHERE idProduto = {3}", obj.Descricao, obj.Estoque, obj.Margem, obj.Codigo);
-                return ExecutarQuery(query);
-            }
-
-            catch (Exception ex)
-            {
-                FecharConexao();
-                throw ex;
-            }
-
-            finally
-            {
-                FecharConexao();
-            }
-        }
-
-
-        public bool AlterarCliente(Cliente cliente)
-        {
-            try
-            {
-                string query = string.Format("update Clientes set descricao='{0}', WHERE idCliente = {3}", cliente.nome);
+                string query = string.Format("update produtos set descricao='{0}', qtdEstoque={1}, margem = {2} WHERE idProduto = {3}", obj.Descricao, obj.Estoque, obj.Margem, obj.Codigo);
                 return ExecutarQuery(query);
             }
 
@@ -170,7 +128,7 @@ namespace BaseDados
         {
             try
             {
-                string query = string.Format("delete from Produtos where idProduto  = {0}", obj.Codigo);
+                string query = string.Format("delete from produtos where idProduto  = {0}", obj.Codigo);
                 return ExecutarQuery(query);
             }
 
