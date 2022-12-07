@@ -81,6 +81,18 @@
     <Compile Include="Cadastros\FrmMovimentacaoProdutos.Designer.cs">
       <DependentUpon>FrmMovimentacaoProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\FrmConsultaCliente .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultaCliente .Designer.cs">
+      <DependentUpon>FrmConsultaCliente .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultaFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\FrmConsultaFornecedor.Designer.cs">
+      <DependentUpon>FrmConsultaFornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\FrmConsultaProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +157,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\FrmMovimentacaoProdutos.resx">
       <DependentUpon>FrmMovimentacaoProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\FrmConsultaCliente .resx">
+      <DependentUpon>FrmConsultaCliente .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\FrmConsultaFornecedor.resx">
+      <DependentUpon>FrmConsultaFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Consultas\FrmConsultaProdutos.resx">
       <DependentUpon>FrmConsultaProdutos.cs</DependentUpon>
