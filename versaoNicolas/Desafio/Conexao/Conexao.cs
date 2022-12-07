@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Entidades;
+using System.Text;
 
 namespace BaseDados
 {
@@ -80,96 +83,7 @@ namespace BaseDados
             }
         }
 
-        public bool InserirFornecedor(Fornecedor Fornecedor)
-        {
-            try
-            {
-                string query = string.Format("INSERT INTO Forncedor (nomeFornecedor) values('{0}')", Fornecedor.Nome);
-                return ExecutarQuery(query);
-            }
-
-            catch (Exception ex)
-            {
-                FecharConexao();
-                throw ex;
-            }
-
-            finally
-            {
-                FecharConexao();
-            }
-        }
-
-        public bool AlterarFornecedor(Fornecedor obj)
-        {
-            try
-            {
-                string query = string.Format("update fornecedor set nomeFornecedor='{0}'", obj.Nome, obj.Codigo);
-                return ExecutarQuery(query);
-            }
-
-            catch (Exception ex)
-            {
-                FecharConexao();
-                throw ex;
-            }
-
-            finally
-            {
-                FecharConexao();
-            }
-        }
-
-        public bool ExcluirFornecedor(Fornecedor obj)
-        {
-            try
-            {
-                string query = string.Format("delete from fornecedor where idProduto  = {0}", obj.Codigo);
-                return ExecutarQuery(query);
-            }
-
-            catch (Exception ex)
-            {
-                FecharConexao();
-                throw ex;
-            }
-
-            finally
-            {
-                FecharConexao();
-            }
-        }
-
-        public List<Fornecedor> ListarFornecedor()
-        {
-            List<Fornecedor> listaRegistros = new List<Fornecedor>();
-
-            try
-            {
-                AbrirConexao();
-                string query = @"SELECT idFornecedor ,nomeFornecedor";
-                MySqlCommand cmd = new MySqlCommand(query, Connection);
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Fornecedor obj = new Fornecedor();
-                    obj.Codigo = Convert.ToInt32(reader["idProduto"]);
-                    obj.Nome = reader["nomeFornecedor"].ToString();
-                    listaRegistros.Add(obj);
-                }
-                reader.Close();
-            }
-
-            finally
-            {
-                FecharConexao();
-            }
-
-            return listaRegistros;
-        }
-
-
+       
         public bool InserirProduto(Produto Produto)
         {
             try
