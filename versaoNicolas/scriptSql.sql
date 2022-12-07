@@ -10,6 +10,12 @@ CREATE TABLE PRODUTOS
 	qtdEstoque integer
 );
 
+CREATE TABLE FORNECEDOR
+(
+	idFornecedor integer not null primary key auto_increment,
+	nomeFornecedor varchar(50)
+);
+
 
 CREATE TABLE MOVIMENTACOES
 (
