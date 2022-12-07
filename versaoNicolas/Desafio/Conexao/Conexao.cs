@@ -104,11 +104,91 @@ namespace BaseDados
             }
         }
 
+        public bool InserirFornecedor(Fornecedor Fornecedor)
+        {
+            try
+            {
+                string query = string.Format("INSERT INTO Fornecedor (nomeFornecedor) values('{0}')", Fornecedor.nomeFornecedor);
+                return ExecutarQuery(query);
+            }
+
+            catch (Exception ex)
+            {
+                FecharConexao();
+                throw ex;
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+        }
+
+        public bool InserirCliente(Cliente Cliente)
+        {
+            try
+            {
+                string query = string.Format("INSERT INTO Cliente (nomeCliente) values('{0}')", Cliente.nomeCliente);
+                return ExecutarQuery(query);
+            }
+
+            catch (Exception ex)
+            {
+                FecharConexao();
+                throw ex;
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+        }
+
         public bool AlterarProduto(Produto obj)
         {
             try
             {
                 string query = string.Format("update produtos set descricao='{0}', qtdEstoque={1}, margem = {2} WHERE idProduto = {3}", obj.Descricao, obj.Estoque, obj.Margem, obj.Codigo);
+                return ExecutarQuery(query);
+            }
+
+            catch (Exception ex)
+            {
+                FecharConexao();
+                throw ex;
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+        }
+
+        public bool AlterarFornecedor(Fornecedor obj)
+        {
+            try
+            {
+                string query = string.Format("update Fornecedor set nomeFornecedor='{0}' WHERE idFornecedor = {1}", obj.nomeFornecedor, obj.Codigo);
+                return ExecutarQuery(query);
+            }
+
+            catch (Exception ex)
+            {
+                FecharConexao();
+                throw ex;
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+        }
+        
+        public bool AlterarCliente(Cliente obj)
+        {
+            try
+            {
+                string query = string.Format("update Cliente set nomeCLiente='{0}' WHERE idCliente = {1}", obj.nomeCliente, obj.Codigo);
                 return ExecutarQuery(query);
             }
 
@@ -144,6 +224,46 @@ namespace BaseDados
             }
         }
 
+        public bool ExcluirFornecedor(Fornecedor obj)
+        {
+            try
+            {
+                string query = string.Format("delete from Fornecedor where idFornecedor  = {0}", obj.Codigo);
+                return ExecutarQuery(query);
+            }
+
+            catch (Exception ex)
+            {
+                FecharConexao();
+                throw ex;
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+        }
+        
+        public bool ExcluirCliente(Cliente obj)
+        {
+            try
+            {
+                string query = string.Format("delete from Cliente where idCliente  = {0}", obj.Codigo);
+                return ExecutarQuery(query);
+            }
+
+            catch (Exception ex)
+            {
+                FecharConexao();
+                throw ex;
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+        }
+
         public List<Produto> ListarProdutos()
         {
             List<Produto> listaRegistros = new List<Produto>();
@@ -162,6 +282,64 @@ namespace BaseDados
                     obj.Descricao = reader["descricao"].ToString();
                     obj.Estoque = Convert.ToInt32(reader["qtdEstoque"]);
                     obj.Margem = Convert.ToInt32(reader["margem"]);
+                    listaRegistros.Add(obj);
+                }
+                reader.Close();
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+
+            return listaRegistros;
+        }
+
+        public List<Fornecedor> ListarFornecedor()
+        {
+            List<Fornecedor> listaRegistros = new List<Fornecedor>();
+
+            try
+            {
+                AbrirConexao();
+                string query = @"SELECT idFornecedor FROM Fornecedor";
+                MySqlCommand cmd = new MySqlCommand(query, Connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Fornecedor obj = new Fornecedor();
+                    obj.Codigo = Convert.ToInt32(reader["idFornecedor"]);
+                    obj.nomeFornecedor = reader["nomeFornecedor"].ToString();
+                    listaRegistros.Add(obj);
+                }
+                reader.Close();
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+
+            return listaRegistros;
+        }
+        
+        public List<Cliente> ListarCliente()
+        {
+            List<Cliente> listaRegistros = new List<Cliente>();
+
+            try
+            {
+                AbrirConexao();
+                string query = @"SELECT idCliente FROM Cliente";
+                MySqlCommand cmd = new MySqlCommand(query, Connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Cliente obj = new Cliente();
+                    obj.Codigo = Convert.ToInt32(reader["idCliente"]);
+                    obj.nomeCliente = reader["nomeCliente"].ToString();
                     listaRegistros.Add(obj);
                 }
                 reader.Close();
