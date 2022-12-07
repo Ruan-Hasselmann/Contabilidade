@@ -55,7 +55,11 @@
     <Compile Include="Enumeradores\TipoPagamento.cs" />
     <Compile Include="Enumeradores\Operacao.cs" />
     <Compile Include="MovimentacaoProduto.cs" />
+<<<<<<< HEAD
     <Compile Include="Fornecedor.cs" />
+=======
+    <Compile Include="Cliente.cs" />
+>>>>>>> main
     <Compile Include="Produto.cs" />
     <Compile Include="Classe.cs" />
     <Compile Include="Personagem.cs" />

@@ -57,11 +57,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Cadastros\FrmCadFornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cadastros\FrmCadFornecedores.Designer.cs">
       <DependentUpon>FrmCadFornecedores.cs</DependentUpon>
+=======
+    <Compile Include="Cadastros\FrmCadCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\FrmCadCliente.Designer.cs">
+      <DependentUpon>FrmCadCliente.cs</DependentUpon>
+>>>>>>> main
     </Compile>
     <Compile Include="Cadastros\FrmCadProdutos.cs">
       <SubType>Form</SubType>
@@ -134,8 +142,13 @@
     <Compile Include="Utilitarios\MessageBoxSucesso.cs" />
     <Compile Include="Utilitarios\MessageBoxAviso.cs" />
     <Compile Include="Utilitarios\MessageBoxErro.cs" />
+<<<<<<< HEAD
     <EmbeddedResource Include="Cadastros\FrmCadFornecedores.resx">
       <DependentUpon>FrmCadFornecedores.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Cadastros\FrmCadCliente.resx">
+      <DependentUpon>FrmCadCliente.cs</DependentUpon>
+>>>>>>> main
     </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\FrmCadProdutos.resx">
       <DependentUpon>FrmCadProdutos.cs</DependentUpon>
