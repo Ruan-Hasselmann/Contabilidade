@@ -55,6 +55,7 @@
     <Compile Include="Enumeradores\TipoPagamento.cs" />
     <Compile Include="Enumeradores\Operacao.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="VwGeral.cs" />
     <Compile Include="MovimentacaoProduto.cs" />
     <Compile Include="Fornecedor.cs" />
     <Compile Include="Produto.cs" />

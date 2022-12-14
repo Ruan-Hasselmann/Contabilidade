@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class MovimentacaoProduto
+    public class VwGeral
     {
-        public MovimentacaoProduto(Operacao op)
+        public VwGeral(Operacao op)
         {
             this.Operacao = op;
             this.Produto = new Produto();
             this.Cliente = new Cliente();
-            this.fornecedor = new Fornecedor();
         }
 
-        public MovimentacaoProduto()
+        public VwGeral()
         {
             this.Produto = new Produto();
         }

@@ -57,6 +57,27 @@ namespace Desafio
             this.TxtValorCompra.DataBindings.Add("Text", this.movimentacaoCompra, "valor", false, DataSourceUpdateMode.OnPropertyChanged);
             this.TxtTotalCompra.DataBindings.Add("Text", this.movimentacaoCompra, "Total", false, DataSourceUpdateMode.OnPropertyChanged);
         }
+
+        private void BindCliente()
+        {
+            this.TxtCodigoCliente.DataBindings.Clear();
+            this.LblCliente.DataBindings.Clear();
+
+
+            this.TxtCodigoCliente.DataBindings.Add("Text", this.movimentacaoCompra, "CodigoCliente", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.LblCliente.DataBindings.Add("Text", this.movimentacaoCompra.Cliente, "nomeCliente", false, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
+        private void BindFornecedor()
+        {
+            this.TxtCodigoFornecedor.DataBindings.Clear();
+            this.LblMstFornecedor.DataBindings.Clear();
+
+
+            this.TxtCodigoFornecedor.DataBindings.Add("Text", this.movimentacaoCompra, "CodigoFornecedor", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.LblMstFornecedor.DataBindings.Add("Text", this.movimentacaoCompra.Fornecedor, "nomeFornecedor", false, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
         private void BindProdutoVenda()
         {
             this.TxtCodProdutoVenda.DataBindings.Clear();
@@ -74,6 +95,7 @@ namespace Desafio
         private void Bind() {
             BindProdutoCompra();
             BindProdutoVenda();
+            BindCliente();
         }
 
 
@@ -235,6 +257,42 @@ namespace Desafio
         {
             this.movimentacaoVenda.TipoPagamento = TipoPagamento.Prazo;
 
+        }
+
+        private void ProcurarCliente()
+        {
+            Conexao _db = new Conexao();
+            List<Cliente> listaRegistros = _db.ListarCliente();
+            FrmConsultaCliente frm = new FrmConsultaCliente();
+            frm.StartPosition = FormStartPosition.CenterParent;
+            if (frm.ShowDialog().Equals(DialogResult.OK))
+            {
+                movimentacaoCompra.Cliente = frm.RetornarSelecionado();
+                BindCliente();
+            }
+        }
+
+        private void BtnBuscarCLiente_Click(object sender, EventArgs e)
+        {
+            ProcurarCliente();
+        }
+
+        private void ProcurarFornecedor()
+        {
+            Conexao _db = new Conexao();
+            List<Fornecedor> listaRegistros = _db.ListarFornecedor();
+            FrmConsultaFornecedor frm = new FrmConsultaFornecedor();
+            frm.StartPosition = FormStartPosition.CenterParent;
+            if (frm.ShowDialog().Equals(DialogResult.OK))
+            {
+                movimentacaoCompra.Fornecedor = frm.RetornarSelecionado();
+                BindCliente();
+            }
+        }
+
+        private void BtnBuscarFornecedor_Click(object sender, EventArgs e)
+        {
+            ProcurarFornecedor();
         }
     }
 }

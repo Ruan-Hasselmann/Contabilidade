@@ -35,6 +35,9 @@
             this.BtnPProdutoCompra = new System.Windows.Forms.Button();
             this.TxtCodProdutoCompra = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.TxtPrazoCompra = new System.Windows.Forms.RadioButton();
+            this.TxtVistaCompra = new System.Windows.Forms.RadioButton();
             this.TxtTotalCompra = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.TxtValorCompra = new System.Windows.Forms.TextBox();
@@ -43,6 +46,9 @@
             this.TxtQuantiaCompra = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.TxtPrazoVenda = new System.Windows.Forms.RadioButton();
+            this.TxtVistaVenda = new System.Windows.Forms.RadioButton();
             this.TxtTotalVenda = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.TxtValorVenda = new System.Windows.Forms.TextBox();
@@ -54,16 +60,18 @@
             this.BtnPProdutoVenda = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtProdutoVenda = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.TxtVistaCompra = new System.Windows.Forms.RadioButton();
-            this.TxtPrazoCompra = new System.Windows.Forms.RadioButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.TxtPrazoVenda = new System.Windows.Forms.RadioButton();
-            this.TxtVistaVenda = new System.Windows.Forms.RadioButton();
+            this.TxtCodigoCliente = new System.Windows.Forms.TextBox();
+            this.BtnBuscarCLiente = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LblCliente = new System.Windows.Forms.Label();
+            this.TxtCodigoFornecedor = new System.Windows.Forms.TextBox();
+            this.BtnBuscarFornecedor = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.LblMstFornecedor = new System.Windows.Forms.Label();
             this.PnRodape.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,6 +137,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.TxtCodigoCliente);
+            this.groupBox1.Controls.Add(this.BtnBuscarCLiente);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.LblCliente);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.TxtTotalCompra);
             this.groupBox1.Controls.Add(this.label8);
@@ -148,11 +160,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Comprar";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.TxtPrazoCompra);
+            this.groupBox3.Controls.Add(this.TxtVistaCompra);
+            this.groupBox3.Location = new System.Drawing.Point(12, 122);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 49);
+            this.groupBox3.TabIndex = 69;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Pagamento";
+            // 
+            // TxtPrazoCompra
+            // 
+            this.TxtPrazoCompra.AutoSize = true;
+            this.TxtPrazoCompra.Location = new System.Drawing.Point(88, 19);
+            this.TxtPrazoCompra.Name = "TxtPrazoCompra";
+            this.TxtPrazoCompra.Size = new System.Drawing.Size(61, 17);
+            this.TxtPrazoCompra.TabIndex = 71;
+            this.TxtPrazoCompra.TabStop = true;
+            this.TxtPrazoCompra.Text = "A prazo";
+            this.TxtPrazoCompra.UseVisualStyleBackColor = true;
+            this.TxtPrazoCompra.CheckedChanged += new System.EventHandler(this.TxtPrazoCompra_CheckedChanged);
+            // 
+            // TxtVistaCompra
+            // 
+            this.TxtVistaCompra.AutoSize = true;
+            this.TxtVistaCompra.Location = new System.Drawing.Point(6, 19);
+            this.TxtVistaCompra.Name = "TxtVistaCompra";
+            this.TxtVistaCompra.Size = new System.Drawing.Size(57, 17);
+            this.TxtVistaCompra.TabIndex = 70;
+            this.TxtVistaCompra.TabStop = true;
+            this.TxtVistaCompra.Text = "A vista";
+            this.TxtVistaCompra.UseVisualStyleBackColor = true;
+            this.TxtVistaCompra.CheckedChanged += new System.EventHandler(this.TxtVistaCompra_CheckedChanged);
+            // 
             // TxtTotalCompra
             // 
             this.TxtTotalCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.TxtTotalCompra.Enabled = false;
-            this.TxtTotalCompra.Location = new System.Drawing.Point(194, 138);
+            this.TxtTotalCompra.Location = new System.Drawing.Point(194, 196);
             this.TxtTotalCompra.Name = "TxtTotalCompra";
             this.TxtTotalCompra.Size = new System.Drawing.Size(56, 20);
             this.TxtTotalCompra.TabIndex = 68;
@@ -160,7 +207,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(191, 122);
+            this.label8.Location = new System.Drawing.Point(191, 180);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(31, 13);
             this.label8.TabIndex = 67;
@@ -169,7 +216,7 @@
             // TxtValorCompra
             // 
             this.TxtValorCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TxtValorCompra.Location = new System.Drawing.Point(100, 138);
+            this.TxtValorCompra.Location = new System.Drawing.Point(100, 196);
             this.TxtValorCompra.Name = "TxtValorCompra";
             this.TxtValorCompra.Size = new System.Drawing.Size(32, 20);
             this.TxtValorCompra.TabIndex = 66;
@@ -178,7 +225,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(97, 122);
+            this.label9.Location = new System.Drawing.Point(97, 180);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 65;
@@ -198,7 +245,7 @@
             // TxtQuantiaCompra
             // 
             this.TxtQuantiaCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TxtQuantiaCompra.Location = new System.Drawing.Point(12, 138);
+            this.TxtQuantiaCompra.Location = new System.Drawing.Point(12, 196);
             this.TxtQuantiaCompra.Name = "TxtQuantiaCompra";
             this.TxtQuantiaCompra.Size = new System.Drawing.Size(32, 20);
             this.TxtQuantiaCompra.TabIndex = 58;
@@ -207,7 +254,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 122);
+            this.label5.Location = new System.Drawing.Point(9, 180);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 13);
             this.label5.TabIndex = 57;
@@ -215,6 +262,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.TxtCodigoFornecedor);
+            this.groupBox2.Controls.Add(this.BtnBuscarFornecedor);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.LblMstFornecedor);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.TxtTotalVenda);
             this.groupBox2.Controls.Add(this.label7);
@@ -234,11 +285,46 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Vender";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.TxtPrazoVenda);
+            this.groupBox4.Controls.Add(this.TxtVistaVenda);
+            this.groupBox4.Location = new System.Drawing.Point(23, 122);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 49);
+            this.groupBox4.TabIndex = 70;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Pagamento";
+            // 
+            // TxtPrazoVenda
+            // 
+            this.TxtPrazoVenda.AutoSize = true;
+            this.TxtPrazoVenda.Location = new System.Drawing.Point(88, 19);
+            this.TxtPrazoVenda.Name = "TxtPrazoVenda";
+            this.TxtPrazoVenda.Size = new System.Drawing.Size(61, 17);
+            this.TxtPrazoVenda.TabIndex = 71;
+            this.TxtPrazoVenda.TabStop = true;
+            this.TxtPrazoVenda.Text = "A prazo";
+            this.TxtPrazoVenda.UseVisualStyleBackColor = true;
+            this.TxtPrazoVenda.CheckedChanged += new System.EventHandler(this.TxtPrazoVenda_CheckedChanged);
+            // 
+            // TxtVistaVenda
+            // 
+            this.TxtVistaVenda.AutoSize = true;
+            this.TxtVistaVenda.Location = new System.Drawing.Point(6, 19);
+            this.TxtVistaVenda.Name = "TxtVistaVenda";
+            this.TxtVistaVenda.Size = new System.Drawing.Size(57, 17);
+            this.TxtVistaVenda.TabIndex = 70;
+            this.TxtVistaVenda.TabStop = true;
+            this.TxtVistaVenda.Text = "A vista";
+            this.TxtVistaVenda.UseVisualStyleBackColor = true;
+            this.TxtVistaVenda.CheckedChanged += new System.EventHandler(this.TxtVistaVenda_CheckedChanged);
+            // 
             // TxtTotalVenda
             // 
             this.TxtTotalVenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.TxtTotalVenda.Enabled = false;
-            this.TxtTotalVenda.Location = new System.Drawing.Point(188, 138);
+            this.TxtTotalVenda.Location = new System.Drawing.Point(195, 196);
             this.TxtTotalVenda.Name = "TxtTotalVenda";
             this.TxtTotalVenda.Size = new System.Drawing.Size(64, 20);
             this.TxtTotalVenda.TabIndex = 64;
@@ -246,7 +332,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(185, 122);
+            this.label7.Location = new System.Drawing.Point(192, 180);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 13);
             this.label7.TabIndex = 63;
@@ -255,7 +341,7 @@
             // TxtValorVenda
             // 
             this.TxtValorVenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TxtValorVenda.Location = new System.Drawing.Point(94, 138);
+            this.TxtValorVenda.Location = new System.Drawing.Point(101, 196);
             this.TxtValorVenda.Name = "TxtValorVenda";
             this.TxtValorVenda.Size = new System.Drawing.Size(32, 20);
             this.TxtValorVenda.TabIndex = 62;
@@ -263,7 +349,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(91, 122);
+            this.label6.Location = new System.Drawing.Point(98, 180);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 13);
             this.label6.TabIndex = 61;
@@ -283,7 +369,7 @@
             // TxtQuantiaVenda
             // 
             this.TxtQuantiaVenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TxtQuantiaVenda.Location = new System.Drawing.Point(6, 138);
+            this.TxtQuantiaVenda.Location = new System.Drawing.Point(13, 196);
             this.TxtQuantiaVenda.Name = "TxtQuantiaVenda";
             this.TxtQuantiaVenda.Size = new System.Drawing.Size(32, 20);
             this.TxtQuantiaVenda.TabIndex = 56;
@@ -291,7 +377,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 122);
+            this.label2.Location = new System.Drawing.Point(10, 180);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 55;
@@ -337,75 +423,85 @@
             this.TxtProdutoVenda.Size = new System.Drawing.Size(185, 17);
             this.TxtProdutoVenda.TabIndex = 45;
             // 
-            // groupBox3
+            // TxtCodigoCliente
             // 
-            this.groupBox3.Controls.Add(this.TxtPrazoCompra);
-            this.groupBox3.Controls.Add(this.TxtVistaCompra);
-            this.groupBox3.Location = new System.Drawing.Point(12, 64);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 49);
-            this.groupBox3.TabIndex = 69;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Pagamento";
+            this.TxtCodigoCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.TxtCodigoCliente.Enabled = false;
+            this.TxtCodigoCliente.Location = new System.Drawing.Point(12, 86);
+            this.TxtCodigoCliente.Name = "TxtCodigoCliente";
+            this.TxtCodigoCliente.Size = new System.Drawing.Size(32, 20);
+            this.TxtCodigoCliente.TabIndex = 73;
             // 
-            // TxtVistaCompra
+            // BtnBuscarCLiente
             // 
-            this.TxtVistaCompra.AutoSize = true;
-            this.TxtVistaCompra.Location = new System.Drawing.Point(6, 19);
-            this.TxtVistaCompra.Name = "TxtVistaCompra";
-            this.TxtVistaCompra.Size = new System.Drawing.Size(57, 17);
-            this.TxtVistaCompra.TabIndex = 70;
-            this.TxtVistaCompra.TabStop = true;
-            this.TxtVistaCompra.Text = "A vista";
-            this.TxtVistaCompra.UseVisualStyleBackColor = true;
-            this.TxtVistaCompra.CheckedChanged += new System.EventHandler(this.TxtVistaCompra_CheckedChanged);
+            this.BtnBuscarCLiente.Location = new System.Drawing.Point(57, 83);
+            this.BtnBuscarCLiente.Name = "BtnBuscarCLiente";
+            this.BtnBuscarCLiente.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuscarCLiente.TabIndex = 72;
+            this.BtnBuscarCLiente.Text = "Pesquisar";
+            this.BtnBuscarCLiente.UseVisualStyleBackColor = true;
+            this.BtnBuscarCLiente.Click += new System.EventHandler(this.BtnBuscarCLiente_Click);
             // 
-            // TxtPrazoCompra
+            // label4
             // 
-            this.TxtPrazoCompra.AutoSize = true;
-            this.TxtPrazoCompra.Location = new System.Drawing.Point(88, 19);
-            this.TxtPrazoCompra.Name = "TxtPrazoCompra";
-            this.TxtPrazoCompra.Size = new System.Drawing.Size(61, 17);
-            this.TxtPrazoCompra.TabIndex = 71;
-            this.TxtPrazoCompra.TabStop = true;
-            this.TxtPrazoCompra.Text = "A prazo";
-            this.TxtPrazoCompra.UseVisualStyleBackColor = true;
-            this.TxtPrazoCompra.CheckedChanged += new System.EventHandler(this.TxtPrazoCompra_CheckedChanged);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 71;
+            this.label4.Text = "Cliente";
             // 
-            // groupBox4
+            // LblCliente
             // 
-            this.groupBox4.Controls.Add(this.TxtPrazoVenda);
-            this.groupBox4.Controls.Add(this.TxtVistaVenda);
-            this.groupBox4.Location = new System.Drawing.Point(16, 64);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(200, 49);
-            this.groupBox4.TabIndex = 70;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Pagamento";
+            this.LblCliente.BackColor = System.Drawing.SystemColors.Control;
+            this.LblCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LblCliente.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.LblCliente.Location = new System.Drawing.Point(138, 87);
+            this.LblCliente.Name = "LblCliente";
+            this.LblCliente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblCliente.Size = new System.Drawing.Size(185, 17);
+            this.LblCliente.TabIndex = 70;
             // 
-            // TxtPrazoVenda
+            // TxtCodigoFornecedor
             // 
-            this.TxtPrazoVenda.AutoSize = true;
-            this.TxtPrazoVenda.Location = new System.Drawing.Point(88, 19);
-            this.TxtPrazoVenda.Name = "TxtPrazoVenda";
-            this.TxtPrazoVenda.Size = new System.Drawing.Size(61, 17);
-            this.TxtPrazoVenda.TabIndex = 71;
-            this.TxtPrazoVenda.TabStop = true;
-            this.TxtPrazoVenda.Text = "A prazo";
-            this.TxtPrazoVenda.UseVisualStyleBackColor = true;
-            this.TxtPrazoVenda.CheckedChanged += new System.EventHandler(this.TxtPrazoVenda_CheckedChanged);
+            this.TxtCodigoFornecedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.TxtCodigoFornecedor.Enabled = false;
+            this.TxtCodigoFornecedor.Location = new System.Drawing.Point(6, 85);
+            this.TxtCodigoFornecedor.Name = "TxtCodigoFornecedor";
+            this.TxtCodigoFornecedor.Size = new System.Drawing.Size(32, 20);
+            this.TxtCodigoFornecedor.TabIndex = 77;
             // 
-            // TxtVistaVenda
+            // BtnBuscarFornecedor
             // 
-            this.TxtVistaVenda.AutoSize = true;
-            this.TxtVistaVenda.Location = new System.Drawing.Point(6, 19);
-            this.TxtVistaVenda.Name = "TxtVistaVenda";
-            this.TxtVistaVenda.Size = new System.Drawing.Size(57, 17);
-            this.TxtVistaVenda.TabIndex = 70;
-            this.TxtVistaVenda.TabStop = true;
-            this.TxtVistaVenda.Text = "A vista";
-            this.TxtVistaVenda.UseVisualStyleBackColor = true;
-            this.TxtVistaVenda.CheckedChanged += new System.EventHandler(this.TxtVistaVenda_CheckedChanged);
+            this.BtnBuscarFornecedor.Location = new System.Drawing.Point(58, 83);
+            this.BtnBuscarFornecedor.Name = "BtnBuscarFornecedor";
+            this.BtnBuscarFornecedor.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuscarFornecedor.TabIndex = 76;
+            this.BtnBuscarFornecedor.Text = "Pesquisar";
+            this.BtnBuscarFornecedor.UseVisualStyleBackColor = true;
+            this.BtnBuscarFornecedor.Click += new System.EventHandler(this.BtnBuscarFornecedor_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(10, 67);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 13);
+            this.label10.TabIndex = 75;
+            this.label10.Text = "Fornecedor";
+            // 
+            // LblMstFornecedor
+            // 
+            this.LblMstFornecedor.BackColor = System.Drawing.SystemColors.Control;
+            this.LblMstFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LblMstFornecedor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblMstFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.LblMstFornecedor.Location = new System.Drawing.Point(139, 87);
+            this.LblMstFornecedor.Name = "LblMstFornecedor";
+            this.LblMstFornecedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblMstFornecedor.Size = new System.Drawing.Size(185, 17);
+            this.LblMstFornecedor.TabIndex = 74;
             // 
             // FrmMovimentacaoProdutos
             // 
@@ -421,10 +517,10 @@
             this.PnRodape.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
@@ -464,6 +560,14 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton TxtPrazoVenda;
         private System.Windows.Forms.RadioButton TxtVistaVenda;
+        private System.Windows.Forms.TextBox TxtCodigoCliente;
+        private System.Windows.Forms.Button BtnBuscarCLiente;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label LblCliente;
+        private System.Windows.Forms.TextBox TxtCodigoFornecedor;
+        private System.Windows.Forms.Button BtnBuscarFornecedor;
+        private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.Label LblMstFornecedor;
     }
 }
 
