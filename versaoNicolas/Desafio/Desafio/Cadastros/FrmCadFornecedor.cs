@@ -23,7 +23,7 @@ namespace Desafio.Cadastros
 
 
             this.TxtCodigo.DataBindings.Add("Text", this.Cadastro, "Codigo", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.TxtDescricao.DataBindings.Add("Text", this.Cadastro, "Nome Fornecedor", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtDescricao.DataBindings.Add("Text", this.Cadastro, "nomeFornecedor", false, DataSourceUpdateMode.OnPropertyChanged);
 
         }
 

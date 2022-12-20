@@ -26,8 +26,8 @@ namespace BaseDados
         {
             Server = "127.0.0.1";
             Database = "db_contabilidade;";
-            Uid = "root";
-            Password = "laboratorio";
+            Uid = "sacnet";
+            Password = "ik9rru2j*@";
             Port = "3306";
             string connectionstring = "SERVER=" + Server + ";" + "PORT=" + Port + ";" + "DATABASE=" +
             Database + ";" + "UID=" + Uid + ";" + "PASSWORD=" + Password + ";";
@@ -302,7 +302,7 @@ namespace BaseDados
             try
             {
                 AbrirConexao();
-                string query = @"SELECT idFornecedor FROM Fornecedor";
+                string query = @"SELECT * FROM Fornecedor";
                 MySqlCommand cmd = new MySqlCommand(query, Connection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -331,7 +331,7 @@ namespace BaseDados
             try
             {
                 AbrirConexao();
-                string query = @"SELECT idCliente FROM Cliente";
+                string query = @"SELECT * FROM Cliente";
                 MySqlCommand cmd = new MySqlCommand(query, Connection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -360,7 +360,7 @@ namespace BaseDados
             try
             {
                 AbrirConexao();
-                string query = @"SELECT idMov ,operacao ,valor, qtd, tipoPagamento, fk_idProduto FROM MOVIMENTACOES";
+                string query = @"SELECT idMov ,operacao ,valor, qtd, tipoPagamento, fk_idProduto, fk_idCliente, fk_idFornecedor,parcelas,entrada FROM MOVIMENTACOES";
                 MySqlCommand cmd = new MySqlCommand(query, Connection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -373,6 +373,10 @@ namespace BaseDados
                     obj.quantidade = Convert.ToInt32(reader["qtd"]);
                     obj.TipoPagamento = (TipoPagamento)Convert.ToInt32(reader["tipoPagamento"]);
                     obj.CodigoProduto = Convert.ToInt32(reader["idProduto"]);
+                    obj.CodigoCliente  = (reader["fk_idCliente"] == DBNull.Value) ? (int?)null : Convert.ToInt32(reader["fk_idCliente"]);
+                    obj.CodigoFornecedor = (reader["fk_idFornecedor"] == DBNull.Value) ? (int?)null : Convert.ToInt32(reader["fk_idFornecedor"]);
+                    obj.Codigo = Convert.ToInt32(reader["idProduto"]);
+                    obj.Operacao = (Operacao)Convert.ToInt32(reader["operacao"]);
                     listaRegistros.Add(obj);
                 }
                 reader.Close();
@@ -420,12 +424,33 @@ namespace BaseDados
             }
         }
 
-        public bool InserirMovimentacao(MovimentacaoProduto Movimentacao)
+        public bool InserirMovimentacaoCompra(MovimentacaoProduto Movimentacao)
         {
             try
             {
-                string query = string.Format("INSERT INTO MOVIMENTACOES (operacao, valor, qtd, tipoPagamento, fk_idProduto) " +
-                    "values('{0}', '{1}', {2}, {3}, {4})", (int)Movimentacao.Operacao, Movimentacao.valor, Movimentacao.quantidade, (int)Movimentacao.TipoPagamento, Movimentacao.CodigoProduto);
+                string query = string.Format("INSERT INTO MOVIMENTACOES (operacao, valor, qtd, tipoPagamento, fk_idProduto, fk_idFornecedor, parcelas, entrada) " +
+                    "values({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})", (int)Movimentacao.Operacao, Movimentacao.valor, Movimentacao.quantidade, (int)Movimentacao.TipoPagamento, Movimentacao.CodigoProduto, Movimentacao.CodigoFornecedor, Movimentacao.Parcelas, Movimentacao.entrada) ;
+                return ExecutarQuery(query);
+            }
+
+            catch (Exception ex)
+            {
+                FecharConexao();
+                throw ex;
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+        }
+
+        public bool InserirMovimentacaoVenda(MovimentacaoProduto Movimentacao)
+        {
+            try
+            {
+                string query = string.Format("INSERT INTO MOVIMENTACOES (operacao, valor, qtd, tipoPagamento, fk_idProduto, fk_idCliente, parcelas, entrada) " +
+                    "values({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})", (int)Movimentacao.Operacao, Movimentacao.valor, Movimentacao.quantidade, (int)Movimentacao.TipoPagamento, Movimentacao.CodigoProduto, Movimentacao.CodigoCliente, Movimentacao.Parcelas, Movimentacao.entrada);
                 return ExecutarQuery(query);
             }
 
@@ -547,6 +572,65 @@ namespace BaseDados
                     obj.HP = Convert.ToInt32(reader["hp"]);
                     obj.Destresa = Convert.ToInt32(reader["destresa"]);
                     obj.Defesa = Convert.ToInt32(reader["defesa"]);
+
+                    listaRegistros.Add(obj);
+                }
+                reader.Close();
+            }
+
+            finally
+            {
+                FecharConexao();
+            }
+            return listaRegistros;
+        }
+
+        public List<VwGeral> ListarVwGeral()
+        {
+            List<VwGeral> listaRegistros = new List<VwGeral>();
+
+            try
+            {
+                AbrirConexao();
+                string query = @"SELECT 
+                                    idMov,
+                                    operacao,
+                                    valor,
+                                    qtd,
+                                    tipoPagamento,
+                                    fk_idProduto,
+                                    fk_idCliente,
+                                    fk_idFornecedor,
+                                    idProduto,
+                                    descricao_produto,
+                                    idCliente,
+                                    nome_cliente,
+                                    idFornecedor,
+                                    nome_fornecedor,
+                                    parcelas,
+                                    entrada,
+                                    margem
+                                                FROM Geral";
+                MySqlCommand cmd = new MySqlCommand(query, Connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    VwGeral obj = new VwGeral();
+                    obj.IdMovimentacao = Convert.ToInt32(reader["idMov"]);
+                    obj.operacao = (Operacao)Convert.ToInt32(reader["operacao"]);
+                    obj.valor = Convert.ToDecimal(reader["valor"]);
+                    obj.quantidade = Convert.ToInt32(reader["qtd"]);
+                    obj.TipoPagamento = (TipoPagamento)Convert.ToInt32(reader["tipoPagamento"]);
+                    obj.IdProduto = Convert.ToInt32(reader["fk_idProduto"]);
+                    obj.DescricaoProduto = reader["descricao_produto"].ToString();
+                    obj.IdCLiente = (reader["fk_idCliente"] == DBNull.Value) ? (int?)null : Convert.ToInt32(reader["fk_idCliente"]);
+                    obj.NomeCLiente = reader["nome_cliente"].ToString();
+                    obj.IdFonecedor = (reader["fk_idFornecedor"] == DBNull.Value) ? (int?)null : Convert.ToInt32(reader["fk_idFornecedor"]);
+                    obj.NomeFornecedor = reader["nome_fornecedor"].ToString();
+                    obj.Parcelas = Convert.ToInt32(reader["parcelas"]);
+                    obj.Entrada = Convert.ToInt32(reader["entrada"]);
+                    obj.Margem = Convert.ToDecimal(reader["margem"]);
 
                     listaRegistros.Add(obj);
                 }

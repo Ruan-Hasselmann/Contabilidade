@@ -8,95 +8,52 @@ namespace Entidades
 {
     public class VwGeral
     {
-        public VwGeral(Operacao op)
-        {
-            this.Operacao = op;
-            this.Produto = new Produto();
-            this.Cliente = new Cliente();
-        }
-
         public VwGeral()
         {
-            this.Produto = new Produto();
+
         }
-
-        public int Codigo { get; set; }
-
-        public int? CodigoProduto { get; set; }
-
-        private Produto produto;
-
-        public Produto Produto
-        {
-            get
-            {
-                return this.produto;
-            }
-            set
-            {
-                this.produto = value;
-                if (value != null && value.Codigo > 0)
-                    this.CodigoProduto = value.Codigo;
-                else
-                    this.CodigoProduto = null;
-            }
-        }
-
-        public Operacao Operacao { get; set; }
-
-        public TipoPagamento TipoPagamento { get; set; }
-
+        public int IdMovimentacao { get; set; }
+        public Operacao operacao { get; set; }
+        public decimal valor { get; set; }
         public int quantidade { get; set; }
+        public TipoPagamento TipoPagamento { get; set; }
+        public int IdProduto { get; set; }
+        public string DescricaoProduto { get; set; }
+        public int? IdCLiente { get; set; }
+        public string NomeCLiente { get; set; }
+        public int? IdFonecedor { get; set; }
+        public string NomeFornecedor { get; set; }
+        public int Parcelas { get; set; }
+        public int Entrada { get; set; }
 
-        public double valor { get; set; }
-
-        public double Total
+        public decimal Total
         {
             get
             {
                 return quantidade * valor;
             }
-            set { }
+            set
+            {
+
+            }
         }
-
-        public int? CodigoCliente { get; set; }
-
-        private Cliente cliente;
-
-        public Cliente Cliente
+        public decimal Margem { get; set; }
+        public decimal Lucro
         {
             get
             {
-                return this.cliente;
+                if (operacao.Equals(Operacao.Venda))
+                {
+                    return ((this.Margem * 100) / valor);
+                }
+                return 0;
             }
             set
             {
-                this.cliente = value;
-                if (value != null && value.Codigo > 0)
-                    this.CodigoCliente = value.Codigo;
-                else
-                    this.CodigoCliente = null;
+
             }
         }
 
-        public int? CodigoFornecedor { get; set; }
 
-        private Fornecedor fornecedor;
-
-        public Fornecedor Fornecedor
-        {
-            get
-            {
-                return this.fornecedor;
-            }
-            set
-            {
-                this.fornecedor = value;
-                if (value != null && value.Codigo > 0)
-                    this.CodigoFornecedor = value.Codigo;
-                else
-                    this.CodigoFornecedor = null;
-            }
-        }
     }
 }

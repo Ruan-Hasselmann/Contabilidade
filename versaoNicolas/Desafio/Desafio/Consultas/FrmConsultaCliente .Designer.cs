@@ -149,7 +149,7 @@
             // clDescricao
             // 
             this.clDescricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clDescricao.DataPropertyName = "Descricao";
+            this.clDescricao.DataPropertyName = "nomeCliente";
             this.clDescricao.HeaderText = "Nome Cliente";
             this.clDescricao.Name = "clDescricao";
             // 

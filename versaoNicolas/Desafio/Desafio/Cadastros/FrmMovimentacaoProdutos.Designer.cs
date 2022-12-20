@@ -35,6 +35,10 @@
             this.BtnPProdutoCompra = new System.Windows.Forms.Button();
             this.TxtCodProdutoCompra = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TxtCodigoCliente = new System.Windows.Forms.TextBox();
+            this.BtnBuscarCLiente = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LblCliente = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.TxtPrazoCompra = new System.Windows.Forms.RadioButton();
             this.TxtVistaCompra = new System.Windows.Forms.RadioButton();
@@ -46,6 +50,10 @@
             this.TxtQuantiaCompra = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TxtCodigoFornecedor = new System.Windows.Forms.TextBox();
+            this.BtnBuscarFornecedor = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.LblMstFornecedor = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.TxtPrazoVenda = new System.Windows.Forms.RadioButton();
             this.TxtVistaVenda = new System.Windows.Forms.RadioButton();
@@ -60,14 +68,6 @@
             this.BtnPProdutoVenda = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtProdutoVenda = new System.Windows.Forms.Label();
-            this.TxtCodigoCliente = new System.Windows.Forms.TextBox();
-            this.BtnBuscarCLiente = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.LblCliente = new System.Windows.Forms.Label();
-            this.TxtCodigoFornecedor = new System.Windows.Forms.TextBox();
-            this.BtnBuscarFornecedor = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.LblMstFornecedor = new System.Windows.Forms.Label();
             this.PnRodape.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -137,16 +137,16 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.TxtCodigoCliente);
-            this.groupBox1.Controls.Add(this.BtnBuscarCLiente);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.LblCliente);
             this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.TxtCodigoFornecedor);
             this.groupBox1.Controls.Add(this.TxtTotalCompra);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.TxtValorCompra);
+            this.groupBox1.Controls.Add(this.BtnBuscarFornecedor);
             this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.BtnConfirmarCompra);
+            this.groupBox1.Controls.Add(this.LblMstFornecedor);
             this.groupBox1.Controls.Add(this.TxtQuantiaCompra);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.TxtCodProdutoCompra);
@@ -159,6 +159,46 @@
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Comprar";
+            // 
+            // TxtCodigoCliente
+            // 
+            this.TxtCodigoCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.TxtCodigoCliente.Enabled = false;
+            this.TxtCodigoCliente.Location = new System.Drawing.Point(6, 82);
+            this.TxtCodigoCliente.Name = "TxtCodigoCliente";
+            this.TxtCodigoCliente.Size = new System.Drawing.Size(32, 20);
+            this.TxtCodigoCliente.TabIndex = 73;
+            // 
+            // BtnBuscarCLiente
+            // 
+            this.BtnBuscarCLiente.Location = new System.Drawing.Point(51, 79);
+            this.BtnBuscarCLiente.Name = "BtnBuscarCLiente";
+            this.BtnBuscarCLiente.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuscarCLiente.TabIndex = 72;
+            this.BtnBuscarCLiente.Text = "Pesquisar";
+            this.BtnBuscarCLiente.UseVisualStyleBackColor = true;
+            this.BtnBuscarCLiente.Click += new System.EventHandler(this.BtnBuscarCLiente_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 71;
+            this.label4.Text = "Cliente";
+            // 
+            // LblCliente
+            // 
+            this.LblCliente.BackColor = System.Drawing.SystemColors.Control;
+            this.LblCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LblCliente.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.LblCliente.Location = new System.Drawing.Point(132, 83);
+            this.LblCliente.Name = "LblCliente";
+            this.LblCliente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblCliente.Size = new System.Drawing.Size(185, 17);
+            this.LblCliente.TabIndex = 70;
             // 
             // groupBox3
             // 
@@ -262,10 +302,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.TxtCodigoFornecedor);
-            this.groupBox2.Controls.Add(this.BtnBuscarFornecedor);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.LblMstFornecedor);
+            this.groupBox2.Controls.Add(this.TxtCodigoCliente);
+            this.groupBox2.Controls.Add(this.BtnBuscarCLiente);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.LblCliente);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.TxtTotalVenda);
             this.groupBox2.Controls.Add(this.label7);
@@ -284,6 +324,46 @@
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Vender";
+            // 
+            // TxtCodigoFornecedor
+            // 
+            this.TxtCodigoFornecedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.TxtCodigoFornecedor.Enabled = false;
+            this.TxtCodigoFornecedor.Location = new System.Drawing.Point(12, 83);
+            this.TxtCodigoFornecedor.Name = "TxtCodigoFornecedor";
+            this.TxtCodigoFornecedor.Size = new System.Drawing.Size(32, 20);
+            this.TxtCodigoFornecedor.TabIndex = 77;
+            // 
+            // BtnBuscarFornecedor
+            // 
+            this.BtnBuscarFornecedor.Location = new System.Drawing.Point(57, 81);
+            this.BtnBuscarFornecedor.Name = "BtnBuscarFornecedor";
+            this.BtnBuscarFornecedor.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuscarFornecedor.TabIndex = 76;
+            this.BtnBuscarFornecedor.Text = "Pesquisar";
+            this.BtnBuscarFornecedor.UseVisualStyleBackColor = true;
+            this.BtnBuscarFornecedor.Click += new System.EventHandler(this.BtnBuscarFornecedor_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 65);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 13);
+            this.label10.TabIndex = 75;
+            this.label10.Text = "Fornecedor";
+            // 
+            // LblMstFornecedor
+            // 
+            this.LblMstFornecedor.BackColor = System.Drawing.SystemColors.Control;
+            this.LblMstFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LblMstFornecedor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LblMstFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.LblMstFornecedor.Location = new System.Drawing.Point(138, 85);
+            this.LblMstFornecedor.Name = "LblMstFornecedor";
+            this.LblMstFornecedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblMstFornecedor.Size = new System.Drawing.Size(185, 17);
+            this.LblMstFornecedor.TabIndex = 74;
             // 
             // groupBox4
             // 
@@ -422,86 +502,6 @@
             this.TxtProdutoVenda.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TxtProdutoVenda.Size = new System.Drawing.Size(185, 17);
             this.TxtProdutoVenda.TabIndex = 45;
-            // 
-            // TxtCodigoCliente
-            // 
-            this.TxtCodigoCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TxtCodigoCliente.Enabled = false;
-            this.TxtCodigoCliente.Location = new System.Drawing.Point(12, 86);
-            this.TxtCodigoCliente.Name = "TxtCodigoCliente";
-            this.TxtCodigoCliente.Size = new System.Drawing.Size(32, 20);
-            this.TxtCodigoCliente.TabIndex = 73;
-            // 
-            // BtnBuscarCLiente
-            // 
-            this.BtnBuscarCLiente.Location = new System.Drawing.Point(57, 83);
-            this.BtnBuscarCLiente.Name = "BtnBuscarCLiente";
-            this.BtnBuscarCLiente.Size = new System.Drawing.Size(75, 23);
-            this.BtnBuscarCLiente.TabIndex = 72;
-            this.BtnBuscarCLiente.Text = "Pesquisar";
-            this.BtnBuscarCLiente.UseVisualStyleBackColor = true;
-            this.BtnBuscarCLiente.Click += new System.EventHandler(this.BtnBuscarCLiente_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 67);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
-            this.label4.TabIndex = 71;
-            this.label4.Text = "Cliente";
-            // 
-            // LblCliente
-            // 
-            this.LblCliente.BackColor = System.Drawing.SystemColors.Control;
-            this.LblCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LblCliente.Cursor = System.Windows.Forms.Cursors.Default;
-            this.LblCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.LblCliente.Location = new System.Drawing.Point(138, 87);
-            this.LblCliente.Name = "LblCliente";
-            this.LblCliente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LblCliente.Size = new System.Drawing.Size(185, 17);
-            this.LblCliente.TabIndex = 70;
-            // 
-            // TxtCodigoFornecedor
-            // 
-            this.TxtCodigoFornecedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.TxtCodigoFornecedor.Enabled = false;
-            this.TxtCodigoFornecedor.Location = new System.Drawing.Point(6, 85);
-            this.TxtCodigoFornecedor.Name = "TxtCodigoFornecedor";
-            this.TxtCodigoFornecedor.Size = new System.Drawing.Size(32, 20);
-            this.TxtCodigoFornecedor.TabIndex = 77;
-            // 
-            // BtnBuscarFornecedor
-            // 
-            this.BtnBuscarFornecedor.Location = new System.Drawing.Point(58, 83);
-            this.BtnBuscarFornecedor.Name = "BtnBuscarFornecedor";
-            this.BtnBuscarFornecedor.Size = new System.Drawing.Size(75, 23);
-            this.BtnBuscarFornecedor.TabIndex = 76;
-            this.BtnBuscarFornecedor.Text = "Pesquisar";
-            this.BtnBuscarFornecedor.UseVisualStyleBackColor = true;
-            this.BtnBuscarFornecedor.Click += new System.EventHandler(this.BtnBuscarFornecedor_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 67);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 13);
-            this.label10.TabIndex = 75;
-            this.label10.Text = "Fornecedor";
-            // 
-            // LblMstFornecedor
-            // 
-            this.LblMstFornecedor.BackColor = System.Drawing.SystemColors.Control;
-            this.LblMstFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LblMstFornecedor.Cursor = System.Windows.Forms.Cursors.Default;
-            this.LblMstFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.LblMstFornecedor.Location = new System.Drawing.Point(139, 87);
-            this.LblMstFornecedor.Name = "LblMstFornecedor";
-            this.LblMstFornecedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LblMstFornecedor.Size = new System.Drawing.Size(185, 17);
-            this.LblMstFornecedor.TabIndex = 74;
             // 
             // FrmMovimentacaoProdutos
             // 

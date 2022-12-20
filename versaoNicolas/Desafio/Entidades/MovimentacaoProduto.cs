@@ -84,6 +84,10 @@ namespace Entidades
 
         private Fornecedor fornecedor;
 
+        public int Parcelas { get; set; }
+
+        public decimal entrada { get; set; }
+
         public Fornecedor Fornecedor
         {
             get

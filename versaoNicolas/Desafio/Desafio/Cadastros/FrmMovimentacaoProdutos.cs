@@ -64,8 +64,8 @@ namespace Desafio
             this.LblCliente.DataBindings.Clear();
 
 
-            this.TxtCodigoCliente.DataBindings.Add("Text", this.movimentacaoCompra, "CodigoCliente", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.LblCliente.DataBindings.Add("Text", this.movimentacaoCompra.Cliente, "nomeCliente", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.TxtCodigoCliente.DataBindings.Add("Text", this.movimentacaoVenda, "CodigoCliente", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.LblCliente.DataBindings.Add("Text", this.movimentacaoVenda.Cliente, "nomeCliente", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void BindFornecedor()
@@ -96,6 +96,7 @@ namespace Desafio
             BindProdutoCompra();
             BindProdutoVenda();
             BindCliente();
+            BindFornecedor();
         }
 
 
@@ -204,14 +205,14 @@ namespace Desafio
         private void InserirCompra()
         {
             Conexao _bd = new Conexao();
-            _bd.InserirMovimentacao(this.movimentacaoCompra);
+            _bd.InserirMovimentacaoCompra(this.movimentacaoCompra);
             _bd.AtualizarEstoque(this.movimentacaoCompra);
         }
 
         private void InserirVenda()
         {
             Conexao _bd = new Conexao();
-            _bd.InserirMovimentacao(this.movimentacaoVenda);
+            _bd.InserirMovimentacaoVenda(this.movimentacaoVenda);
             _bd.AtualizarEstoque(this.movimentacaoVenda);
         }
         private void BtnConfirmarCompra_Click(object sender, EventArgs e)
@@ -267,7 +268,7 @@ namespace Desafio
             frm.StartPosition = FormStartPosition.CenterParent;
             if (frm.ShowDialog().Equals(DialogResult.OK))
             {
-                movimentacaoCompra.Cliente = frm.RetornarSelecionado();
+                movimentacaoVenda.Cliente = frm.RetornarSelecionado();
                 BindCliente();
             }
         }
@@ -286,7 +287,7 @@ namespace Desafio
             if (frm.ShowDialog().Equals(DialogResult.OK))
             {
                 movimentacaoCompra.Fornecedor = frm.RetornarSelecionado();
-                BindCliente();
+                BindFornecedor();
             }
         }
 

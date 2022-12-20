@@ -34,10 +34,14 @@ CREATE TABLE MOVIMENTACOES
 	fk_idProduto integer,
     fk_idCliente integer,
     fk_idFornecedor integer,
+    parcelas INT DEFAULT 0,
+	entrada INT DEFAULT 0,
     foreign key (fk_idProduto) references PRODUTOS(idProduto),
     foreign key (fk_idCliente) references CLIENTE(idCliente),
     foreign key (fk_idFornecedor) references FORNECEDOR(idFornecedor)
 );
+
+DROP VIEW IF EXISTS Geral;
 
 CREATE VIEW Geral as 
 SELECT 	MOV.idMov,
@@ -53,13 +57,16 @@ SELECT 	MOV.idMov,
 	CLI.idCliente as idCliente,
     CLI.nomeCliente as nome_cliente,
     FON.idFornecedor as idFornecedor,
-    FON.nomeFornecedor as nome_fornecedor
+    FON.nomeFornecedor as nome_fornecedor,
+    MOV.parcelas,
+	MOV.entrada,
+    PRO.margem as margem
     FROM MOVIMENTACOES AS MOV 
 		INNER JOIN PRODUTOS AS PRO
 			ON MOV.fk_idProduto = PRO.idProduto
-		INNER JOIN CLIENTE AS CLI
+		LEFT JOIN CLIENTE AS CLI
 			ON MOV.fk_idCliente = CLI.idCliente
-		INNER JOIN FORNECEDOR AS FON
+		LEFT JOIN FORNECEDOR AS FON
 			ON MOV.fk_idFornecedor = FON.idFornecedor;
 
 INSERT INTO PRODUTOS(descricao, qtdEstoque, margem) VALUES ('Lápis', 100, 10);
